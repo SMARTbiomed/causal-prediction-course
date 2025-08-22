@@ -116,7 +116,7 @@ example please answer the following questions:
 Teachers
 ========
 
--   Erin Gabriel, Professor the Section of Biostatistics at the
+-   Erin Gabriel, Professor at the Section of Biostatistics at the
     University of Copenhagen. Her research interest is in causal
     inference, specifically partial identification.
 
