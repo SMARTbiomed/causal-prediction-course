@@ -1,0 +1,209 @@
+---
+title: "Course description"
+format: 
+  html:
+    toc: true
+bibliography: refs.bib
+---
+
+
+::: {.grid}
+
+
+::: {.g-col-6}
+[Course materials](materials.html){.linkcard}
+:::
+
+
+
+::: {.g-col-6}
+[References and resources](resources.html){.linkcard}
+:::
+
+
+:::
+
+
+
+Background
+==========
+
+The development of risk prediction algorithms has exploded in recent
+years in the medical research literature, yet few of these make their
+way into routine clinical practice. A primary purpose of prediction
+models is often stated as being to inform clinical decision making, such
+as whether to give a treatment to a particular patient. However, it has
+been shown that prediction models are typically not designed in a way
+that makes them a valid tool for informing such decisions, in particular
+because they do not appropriately accommodate the treatment decision at
+their design stage. Similarly, the evaluation of prediction models does
+not focus on how well the model would perform for the task of informing
+clinical decision making. A useful model should be evaluated from the
+perspective of its intended use and the intended users. Evaluation
+should consider not only predictive performance, but should also be
+based on costs and benefits which are defined by the clinical context
+and the available resources.
+
+Learning objectives
+===================
+
+By the end of the course, participants will:
+
+-   Be able to easily identify and explain to others the pitfalls of
+    using prognostic predictions for treatment decision support.
+
+-   Be able to identify the difference between prognostic and causal
+    prediction, and be able to outline and explain the differences to
+    others.
+
+-   Be aware of methods for causal prediction and how these methods
+    differ from those used for prognostic prediction.
+
+-   Understand the concept and importance of clinical utility of using
+    these predictions for medical decision making.
+
+-   Have ideas about how to evaluate the performance of and compare
+    causal prediction methods.
+
+Target Participants
+===================
+
+PhD students, postdocs, and faculty in biostatistics, machine learning,
+epidemiology, bioinformatics, and medicine interested in using risk
+predictions for decision making. In particular, the target participants
+are those involved in (or planning to be involved in) research projects
+involving risk prediction for decision making and who would like to
+learn how causal thinking can improve the development and evaluation of
+their models.
+
+Participants should have a basic knowledge of statistics or machine
+learning and have a working understanding of R. Participants should have
+some familiarity with regular prediction methods, including performance
+metrics, as reviewed in these papers
+[@efthimiou2024developing; @cowley2019methodological; @gerds2008performance].
+
+Content and Structure
+=====================
+
+The course will consist of lectures and hands-on participation in the
+form of group work on a risk prediction project based on simulated data.
+
+Everyone will be given the same simulated data set to work with and a
+briefing on the goals of the research project including steps that they
+should be taking along the way. Lectures and resources will be provided
+to prepare the groups to work and make progress on their projects.
+
+Case studies
+============
+
+We encourage students who are developing risk prediction models as part
+of their research to provide information about those projects during the
+registration confirmation. The details of the project will be possibly
+used as case studies to facilitate discussion of the methods in a
+concrete example that is relevant to the students. If you have such an
+example please answer the following questions:
+
+1.  Describe the population for which the prediction model is intended
+    to be used. Who are they, and what information is available to base
+    the predictions on? What outcome is being predicted?
+
+2.  What decisions will be made on the basis of the prediction? What is
+    likely to happen or change after the prediction is made?
+
+3.  What are the main challenges in the development, evaluation, or use
+    of the prediction model?
+
+Teachers
+========
+
+-   Erin Gabriel, Professor the Section of Biostatistics at the
+    University of Copenhagen. Her research interest is in causal
+    inference, specifically partial identification.
+
+-   Ruth Keogh, Professor of Biostatistics and Epidemiology in the
+    Medical Statistics Department and Co-Director of the Centre for Data
+    and Statistical Science for Health (DASH). Ruth's research interests
+    are in statistical methods for analysis of observational data,
+    particularly in causal inference for time-to-event outcomes, and in
+    applications in a range of areas of health research.
+
+-   Thomas Alexander Gerds, Professor at the Section of Biostatistics,
+    University of Copenhagen and Steno Diabetes Center Copenhagen.
+    Thomas' research is about the theory and the applications of
+    statistical methods for binary, longitudinal and time-to-event data.
+
+-   Michael Sachs, Associate Professor at the Section of Biostatistics
+    at the University of Copenhagen. His research interests are the
+    development and evaluation of risk prediction models and biomarkers,
+    statistical computing, and causal inference.
+
+-   Nan van Geloven, Assistant professor of Biostatistics in the
+    department of Biomedical Data Sciences at Leiden Univeristy Medical
+    Center, Leiden, the Netherlands. Her research interests include
+    causal prediction.
+
+-   Karla Diaz-Ordaz is a Professor of Biostatistics at University
+    College London, Department of Statistical Science. She is interested
+    in causal inference, machine learning and non-parametric methods,
+    motivated by epidemiology and clinical trials applications.
+
+Schedule {#schedule .unnumbered}
+========
+
+Day 1 {#day-1 .unnumbered}
+-----
+
+-   **Overview and introduction to risk prediction modeling.** Lectures
+    and practical.
+
+-   **Prediction modeling issues and methods.** Lectures and group
+    exercises.\
+    Validation methods, missing data, time-to-event outcomes, motivating
+    examples.
+
+-   **Introduction to causal prediction.** Lecture.
+
+Day 2 {#day-2 .unnumbered}
+-----
+
+-   **Introduction to causal inference**. Lectures, practical, group
+    exercises.\
+    Causal graphs, estimands, estimation methods.
+
+-   **Formalization of causal prediction.** Lectures and group
+    exercises.\
+    When non-causal prediction methods fail, causal prediction
+    estimands.
+
+Day 3 {#day-3 .unnumbered}
+-----
+
+-   **Estimation of causal prediction models.** Lectures and practical.\
+    Assumptions, adjustment sets and confounding, weighting and
+    standardisation methods, doubly-robust methods.
+
+-   **Evaluation of causal prediction models.** Lectures and practical.\
+    Performance metrics and their estimation.
+
+Day 4 {#day-4 .unnumbered}
+-----
+
+-   **Advanced topics.** Lectures.\
+    Time to event outcomes and competing events, time varying treatments
+    and confounding.
+
+-   **Case studies.** Group discussion.
+
+-   **Case studies continued.** Group discussion.
+
+-   **Advanced topics continued: clinical utility.** Lecture.
+
+-   **Summary and review.** With Q&A.
+
+Exercises and practicals {#exercises-and-practicals .unnumbered}
+========================
+
+Students will have time to work individually and/or in groups to apply
+the methods to a synthetic dataset. For several exercises, small groups
+will produce prediction models and send them to the teachers for
+evaluation.

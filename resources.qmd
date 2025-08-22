@@ -1,0 +1,10 @@
+---
+title: "Resources and references"
+format: html
+bibliography: refs.bib
+nocite: |
+  @*
+---
+
+# References
+

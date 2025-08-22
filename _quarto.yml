@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - data/*
+  render:
+    - "*.qmd"
+    - "!data/"
+
+format:
+  html:
+    theme: default
+    css: styles.css
+    linkcolor: "#e2007a"
+
+site:
+  title: "Causal prediction for medical decision making: Methods and practice"
+  navbar:
+    background: "#004080"
+    text-color: "white"
+    right:
+      - text: "Schedule and materials"
+        href: materials.qmd
+      - text: "References and other resources"
+        href: resources.qmd
+      
+  page-footer:
+      background: "#004080"
+      left:
+        - text: "Contact course director"
+          href: "mailto:smartbiomed_info@sund.ku.dk"
+      right:
+        - text: ""
+
+

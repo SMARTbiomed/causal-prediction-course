@@ -1,0 +1,35 @@
+---
+title: "Course materials"
+format: 
+  html:
+    toc: true
+---
+
+Coming soon!
+
+# Day 1
+
+## Morning
+
+## Afternoon
+
+# Day 2
+
+
+## Morning
+
+## Afternoon
+
+# Day 3
+
+
+## Morning
+
+## Afternoon
+
+# Day 4
+
+
+## Morning
+
+## Afternoon

@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources and references",
+    "section": "",
+    "text": "References\n\nAmsterdam, Wouter AC van, Nan van Geloven, Jesse H Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2025. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” Patterns 6 (4).\n\n\nAnkan, Ankur, and Johannes Textor. 2025. “Expert-in-the-Loop Causal Discovery: Iterative Model Refinement Using Expert Knowledge.” In The 41st Conference on Uncertainty in Artificial Intelligence.\n\n\nBoyer, Christopher B., Issa J. Dahabreh, and Jon A. Steingrimsson. 2024. “Estimating and Evaluating Counterfactual Prediction Models.” https://arxiv.org/abs/2308.13026.\n\n\nCoston, Amanda, Alan Mishler, Edward H Kennedy, and Alexandra Chouldechova. 2020. “Counterfactual Risk Assessments, Evaluation, and Fairness.” In Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency, 582–93.\n\n\nCowley, Laura E, Daniel M Farewell, Sabine Maguire, and Alison M Kemp. 2019. “Methodological Standards for the Development and Evaluation of Clinical Prediction Rules: A Review of the Literature.” Diagnostic and Prognostic Research 3 (1): 16.\n\n\nDamen, Johanna AAG, Lotty Hooft, Ewoud Schuit, Thomas PA Debray, Gary S Collins, Ioanna Tzoulaki, Camille M Lassale, et al. 2016. “Prediction Models for Cardiovascular Disease Risk in the General Population: Systematic Review.” British Medical Journal 353.\n\n\nEfthimiou, Orestis, Michael Seo, Konstantina Chalkou, Thomas Debray, Matthias Egger, and Georgia Salanti. 2024. “Developing Clinical Prediction Models: A Step-by-Step Guide.” Bmj 386.\n\n\nGeloven, Nan van, Ruth H Keogh, Wouter van Amsterdam, Giovanni Cinà, Jesse H Krijthe, Niels Peek, Kim Luijken, et al. 2024. “The Risks of Risk Assessment: Causal Blind Spots When Using Prediction Models for Treatment Decisions.” arXiv Preprint arXiv:2402.17366.\n\n\nGeloven, Nan van, Sonja A Swanson, Chava L Ramspek, Kim Luijken, Merel van Diepen, Tim P Morris, Rolf HH Groenwold, Hans C van Houwelingen, Hein Putter, and Saskia le Cessie. 2020. “Prediction Meets Causal Inference: The Role of Treatment in Clinical Prediction Models.” European Journal of Epidemiology 35: 619–30.\n\n\nGerds, Thomas A, Tianxi Cai, and Martin Schumacher. 2008. “The Performance of Risk Prediction Models.” Biometrical Journal: Journal of Mathematical Methods in Biosciences 50 (4): 457–79.\n\n\nHippisley-Cox, Julia, Carol Coupland, Yana Vinogradova, John Robson, and P Brindle. 2008. “Performance of the QRISK Cardiovascular Risk Prediction Algorithm in an Independent UK Sample of Patients from General Practice: A Validation Study.” Heart 94 (1): 34–39.\n\n\nKeogh, Ruth H, and Nan Van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” Epidemiology 35 (3): 329–39.\n\n\nKullo, Iftikhar J, Hayan Jouni, Erin E Austin, Sherry-Ann Brown, Teresa M Kruisselbrink, Iyad N Isseh, Raad A Haddad, et al. 2016. “Incorporating a Genetic Risk Score into Coronary Heart Disease Risk Estimates: Effect on Low-Density Lipoprotein Cholesterol Levels (the MI-GENES Clinical Trial).” Circulation 133 (12): 1181–88.\n\n\nLin, Lijing, Matthew Sperrin, David A Jenkins, Glen P Martin, and Niels Peek. 2021. “A Scoping Review of Causal Methods Enabling Predictions Under Hypothetical Interventions.” Diagnostic and Prognostic Research 5: 1–16.\n\n\nPearl, J. 2009. Causality: Models, Reasoning, and Inference. 2nd ed. New York: Cambridge University Press.\n\n\nPoinsot, Audrey, Panayiotis Panayiotou, Alessandro Leite, Nicolas CHESNEAU, Özgür Şimşek, and Marc Schoenauer. 2025. “Position: Causal Machine Learning Requires Rigorous Synthetic Experiments for Broader Adoption.” In Forty-Second International Conference on Machine Learning Position Paper Track. https://openreview.net/forum?id=Nr2ulBN50q.\n\n\nSachs, Michael C., Arvid Sjölander, and Erin E. Gabriel. 2020. “Aim for Clinical Utility, Not Just Predictive Accuracy.” Epidemiology 31 (3): 359–64.\n\n\nSilarova, Barbora, Stephen Sharp, Juliet A Usher-Smith, Joanne Lucas, Rupert A Payne, Guy Shefer, Carmel Moore, et al. 2019. “Effect of Communicating Phenotypic and Genetic Risk of Coronary Heart Disease Alongside Web-Based Lifestyle Advice: The INFORM Randomised Controlled Trial.” Heart 105 (13): 982–89.\n\n\nWilkinson, Jack, Kellyn F Arnold, Eleanor J Murray, Maarten van Smeden, Kareem Carr, Rachel Sippy, Marc de Kamps, et al. 2020. “Time to Reality Check the Promises of Machine Learning-Powered Precision Medicine.” The Lancet Digital Health 2 (12): e677–80."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course description",
+    "section": "",
+    "text": "Course materials\n\n\nReferences and resources"
+  },
+  {
+    "objectID": "index.html#day-1",
+    "href": "index.html#day-1",
+    "title": "Course description",
+    "section": "Day 1",
+    "text": "Day 1\n\nOverview and introduction to risk prediction modeling. Lectures and practical.\nPrediction modeling issues and methods. Lectures and group exercises.\nValidation methods, missing data, time-to-event outcomes, motivating examples.\nIntroduction to causal prediction. Lecture."
+  },
+  {
+    "objectID": "index.html#day-2",
+    "href": "index.html#day-2",
+    "title": "Course description",
+    "section": "Day 2",
+    "text": "Day 2\n\nIntroduction to causal inference. Lectures, practical, group exercises.\nCausal graphs, estimands, estimation methods.\nFormalization of causal prediction. Lectures and group exercises.\nWhen non-causal prediction methods fail, causal prediction estimands."
+  },
+  {
+    "objectID": "index.html#day-3",
+    "href": "index.html#day-3",
+    "title": "Course description",
+    "section": "Day 3",
+    "text": "Day 3\n\nEstimation of causal prediction models. Lectures and practical.\nAssumptions, adjustment sets and confounding, weighting and standardisation methods, doubly-robust methods.\nEvaluation of causal prediction models. Lectures and practical.\nPerformance metrics and their estimation."
+  },
+  {
+    "objectID": "index.html#day-4",
+    "href": "index.html#day-4",
+    "title": "Course description",
+    "section": "Day 4",
+    "text": "Day 4\n\nAdvanced topics. Lectures.\nTime to event outcomes and competing events, time varying treatments and confounding.\nCase studies. Group discussion.\nCase studies continued. Group discussion.\nAdvanced topics continued: clinical utility. Lecture.\nSummary and review. With Q&A."
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course materials",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "materials.html#morning",
+    "href": "materials.html#morning",
+    "title": "Course materials",
+    "section": "Morning",
+    "text": "Morning"
+  },
+  {
+    "objectID": "materials.html#afternoon",
+    "href": "materials.html#afternoon",
+    "title": "Course materials",
+    "section": "Afternoon",
+    "text": "Afternoon"
+  },
+  {
+    "objectID": "materials.html#morning-1",
+    "href": "materials.html#morning-1",
+    "title": "Course materials",
+    "section": "Morning",
+    "text": "Morning"
+  },
+  {
+    "objectID": "materials.html#afternoon-1",
+    "href": "materials.html#afternoon-1",
+    "title": "Course materials",
+    "section": "Afternoon",
+    "text": "Afternoon"
+  },
+  {
+    "objectID": "materials.html#morning-2",
+    "href": "materials.html#morning-2",
+    "title": "Course materials",
+    "section": "Morning",
+    "text": "Morning"
+  },
+  {
+    "objectID": "materials.html#afternoon-2",
+    "href": "materials.html#afternoon-2",
+    "title": "Course materials",
+    "section": "Afternoon",
+    "text": "Afternoon"
+  },
+  {
+    "objectID": "materials.html#morning-3",
+    "href": "materials.html#morning-3",
+    "title": "Course materials",
+    "section": "Morning",
+    "text": "Morning"
+  },
+  {
+    "objectID": "materials.html#afternoon-3",
+    "href": "materials.html#afternoon-3",
+    "title": "Course materials",
+    "section": "Afternoon",
+    "text": "Afternoon"
+  }
+]
