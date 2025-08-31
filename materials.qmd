@@ -11,7 +11,17 @@ Coming soon!
 
 ## Morning
 
+1. [Lecture 1: Prediction models in medicine, Michael Sachs (pdf)](/data/lectures/day1-lecture1.pdf)
+2. [Lecture 2: Medical risk prediction models, Thomas Gerds (pdf)](/data/lectures/day1-lecture2.pdf)
+3. [Exercise 1: The Steno Risk engine](/data/exercises/day1-morning.qmd)
+
+
 ## Afternoon
+
+1. [Lecture 3: Obstacles and pitfalls, Thomas Gerds (pdf)](/data/lectures/day1-lecture3.pdf)
+2. [Lecture 4: Learning algorithms and validation, Michael Sachs (pdf)](/data/lectures/day1-lecture4.pdf)
+3. [Exercise 2: Developing and validating your own models](/data/exercises/day1-afternoon.qmd)
+4. [Lecture 5: Introduction to causal prediction, Ruth Keogh (pdf)](/data/lectures/day1-lecture5.pdf)
 
 # Day 2
 

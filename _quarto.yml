@@ -5,8 +5,7 @@ project:
     - data/*
   render:
     - "*.qmd"
-    - "!data/"
-
+    
 format:
   html:
     theme: default
@@ -19,10 +18,14 @@ site:
     background: "#004080"
     text-color: "white"
     right:
+      - text: "Course description"
+        href: description.qmd
       - text: "Schedule and materials"
         href: materials.qmd
       - text: "References and other resources"
         href: resources.qmd
+      - text: "Code of conduct"
+        href: conduct.qmd
       
   page-footer:
       background: "#004080"

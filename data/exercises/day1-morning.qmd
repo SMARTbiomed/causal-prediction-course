@@ -1,0 +1,25 @@
+---
+title: "Day 1 Morning Exercise"
+---
+
+
+Consider the CVD risk prediction tool for type 1 diabetes (Steno
+Diabetes Center Copenhagen): <https://steno.shinyapps.io/T1RiskEngine/>
+\vspace{1em}
+
+# Answer the following questions:
+
+1.  Who is eligible to use this calculator?
+2.  At what occasion can people use this calculator (i.e., what is time zero)?
+3.  In what direction does the 5-year risk change when you change any of the predictor variables keeping the other predictor variables at a fixed value?
+4.  What other risk predictor variables does the Framingham CVD risk calculator use? <https://static.heart.org/riskcalc/app/index.html>
+
+# Think about and discuss the following with your nearest neighbors:
+
+5.  What possible applications does this medical risk prediction model have?
+6.  Which of the risk factors may change over time?
+7.  How old (relative to time zero) are the measurements of these risk factors allowed to be?
+8.  Which of the risk factors are modifiable?
+9.  Correspondingly what would be possible interventions?
+10. Decision making (for versus against an intervention) could be based on comparing the predicted 5-year risk to a fixed threshold, e.g., 10%. How would one incorporate lower and upper limits for the predicted risks to guide a person's decision?
+

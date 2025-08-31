@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Course description – Causal prediction for medical decision making: Methods and practice</title>
+<title>Home – Causal prediction for medical decision making: Methods and practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -109,12 +89,20 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./description.html"> 
+<span class="menu-text">Course description</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./materials.html"> 
 <span class="menu-text">Schedule and materials</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./resources.html"> 
 <span class="menu-text">References and other resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./conduct.html"> 
+<span class="menu-text">Code of conduct</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -127,34 +115,15 @@ div.csl-indent {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li><a href="#target-participants" id="toc-target-participants" class="nav-link" data-scroll-target="#target-participants">Target Participants</a></li>
-  <li><a href="#content-and-structure" id="toc-content-and-structure" class="nav-link" data-scroll-target="#content-and-structure">Content and Structure</a></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies">Case studies</a></li>
-  <li><a href="#teachers" id="toc-teachers" class="nav-link" data-scroll-target="#teachers">Teachers</a></li>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a>
-  <ul class="collapse">
-  <li><a href="#day-1" id="toc-day-1" class="nav-link" data-scroll-target="#day-1">Day 1</a></li>
-  <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a></li>
-  <li><a href="#day-3" id="toc-day-3" class="nav-link" data-scroll-target="#day-3">Day 3</a></li>
-  <li><a href="#day-4" id="toc-day-4" class="nav-link" data-scroll-target="#day-4">Day 4</a></li>
-  </ul></li>
-  <li><a href="#exercises-and-practicals" id="toc-exercises-and-practicals" class="nav-link" data-scroll-target="#exercises-and-practicals">Exercises and practicals</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Course description</h1>
+<h1 class="title">Home</h1>
 </div>
 
 
@@ -173,117 +142,22 @@ div.csl-indent {
 
 <div class="grid">
 <div class="g-col-6">
+<p><a href="description.html" class="linkcard">Course description</a></p>
+</div>
+<div class="g-col-6">
+<p><a href="conduct.html" class="linkcard">Code of conduct</a></p>
+</div>
+<div class="g-col-6">
 <p><a href="materials.html" class="linkcard">Course materials</a></p>
 </div>
 <div class="g-col-6">
 <p><a href="resources.html" class="linkcard">References and resources</a></p>
 </div>
 </div>
-<section id="background" class="level1">
-<h1>Background</h1>
-<p>The development of risk prediction algorithms has exploded in recent years in the medical research literature, yet few of these make their way into routine clinical practice. A primary purpose of prediction models is often stated as being to inform clinical decision making, such as whether to give a treatment to a particular patient. However, it has been shown that prediction models are typically not designed in a way that makes them a valid tool for informing such decisions, in particular because they do not appropriately accommodate the treatment decision at their design stage. Similarly, the evaluation of prediction models does not focus on how well the model would perform for the task of informing clinical decision making. A useful model should be evaluated from the perspective of its intended use and the intended users. Evaluation should consider not only predictive performance, but should also be based on costs and benefits which are defined by the clinical context and the available resources.</p>
-</section>
-<section id="learning-objectives" class="level1">
-<h1>Learning objectives</h1>
-<p>By the end of the course, participants will:</p>
-<ul>
-<li><p>Be able to easily identify and explain to others the pitfalls of using prognostic predictions for treatment decision support.</p></li>
-<li><p>Be able to identify the difference between prognostic and causal prediction, and be able to outline and explain the differences to others.</p></li>
-<li><p>Be aware of methods for causal prediction and how these methods differ from those used for prognostic prediction.</p></li>
-<li><p>Understand the concept and importance of clinical utility of using these predictions for medical decision making.</p></li>
-<li><p>Have ideas about how to evaluate the performance of and compare causal prediction methods.</p></li>
-</ul>
-</section>
-<section id="target-participants" class="level1">
-<h1>Target Participants</h1>
-<p>PhD students, postdocs, and faculty in biostatistics, machine learning, epidemiology, bioinformatics, and medicine interested in using risk predictions for decision making. In particular, the target participants are those involved in (or planning to be involved in) research projects involving risk prediction for decision making and who would like to learn how causal thinking can improve the development and evaluation of their models.</p>
-<p>Participants should have a basic knowledge of statistics or machine learning and have a working understanding of R. Participants should have some familiarity with regular prediction methods, including performance metrics, as reviewed in these papers <span class="citation" data-cites="efthimiou2024developing cowley2019methodological gerds2008performance">(<a href="#ref-efthimiou2024developing" role="doc-biblioref">Efthimiou et al. 2024</a>; <a href="#ref-cowley2019methodological" role="doc-biblioref">Cowley et al. 2019</a>; <a href="#ref-gerds2008performance" role="doc-biblioref">Gerds, Cai, and Schumacher 2008</a>)</span>.</p>
-</section>
-<section id="content-and-structure" class="level1">
-<h1>Content and Structure</h1>
-<p>The course will consist of lectures and hands-on participation in the form of group work on a risk prediction project based on simulated data.</p>
-<p>Everyone will be given the same simulated data set to work with and a briefing on the goals of the research project including steps that they should be taking along the way. Lectures and resources will be provided to prepare the groups to work and make progress on their projects.</p>
-</section>
-<section id="case-studies" class="level1">
-<h1>Case studies</h1>
-<p>We encourage students who are developing risk prediction models as part of their research to provide information about those projects during the registration confirmation. The details of the project will be possibly used as case studies to facilitate discussion of the methods in a concrete example that is relevant to the students. If you have such an example please answer the following questions:</p>
-<ol type="1">
-<li><p>Describe the population for which the prediction model is intended to be used. Who are they, and what information is available to base the predictions on? What outcome is being predicted?</p></li>
-<li><p>What decisions will be made on the basis of the prediction? What is likely to happen or change after the prediction is made?</p></li>
-<li><p>What are the main challenges in the development, evaluation, or use of the prediction model?</p></li>
-</ol>
-</section>
-<section id="teachers" class="level1">
-<h1>Teachers</h1>
-<ul>
-<li><p>Erin Gabriel, Professor at the Section of Biostatistics at the University of Copenhagen. Her research interest is in causal inference, specifically partial identification.</p></li>
-<li><p>Ruth Keogh, Professor of Biostatistics and Epidemiology in the Medical Statistics Department and Co-Director of the Centre for Data and Statistical Science for Health (DASH). Ruth’s research interests are in statistical methods for analysis of observational data, particularly in causal inference for time-to-event outcomes, and in applications in a range of areas of health research.</p></li>
-<li><p>Thomas Alexander Gerds, Professor at the Section of Biostatistics, University of Copenhagen and Steno Diabetes Center Copenhagen. Thomas’ research is about the theory and the applications of statistical methods for binary, longitudinal and time-to-event data.</p></li>
-<li><p>Michael Sachs, Associate Professor at the Section of Biostatistics at the University of Copenhagen. His research interests are the development and evaluation of risk prediction models and biomarkers, statistical computing, and causal inference.</p></li>
-<li><p>Nan van Geloven, Assistant professor of Biostatistics in the department of Biomedical Data Sciences at Leiden Univeristy Medical Center, Leiden, the Netherlands. Her research interests include causal prediction.</p></li>
-<li><p>Karla Diaz-Ordaz is a Professor of Biostatistics at University College London, Department of Statistical Science. She is interested in causal inference, machine learning and non-parametric methods, motivated by epidemiology and clinical trials applications.</p></li>
-</ul>
-</section>
-<section id="schedule" class="level1 unnumbered">
-<h1 class="unnumbered">Schedule</h1>
-<section id="day-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-1">Day 1</h2>
-<ul>
-<li><p><strong>Overview and introduction to risk prediction modeling.</strong> Lectures and practical.</p></li>
-<li><p><strong>Prediction modeling issues and methods.</strong> Lectures and group exercises.<br>
-Validation methods, missing data, time-to-event outcomes, motivating examples.</p></li>
-<li><p><strong>Introduction to causal prediction.</strong> Lecture.</p></li>
-</ul>
-</section>
-<section id="day-2" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-2">Day 2</h2>
-<ul>
-<li><p><strong>Introduction to causal inference</strong>. Lectures, practical, group exercises.<br>
-Causal graphs, estimands, estimation methods.</p></li>
-<li><p><strong>Formalization of causal prediction.</strong> Lectures and group exercises.<br>
-When non-causal prediction methods fail, causal prediction estimands.</p></li>
-</ul>
-</section>
-<section id="day-3" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-3">Day 3</h2>
-<ul>
-<li><p><strong>Estimation of causal prediction models.</strong> Lectures and practical.<br>
-Assumptions, adjustment sets and confounding, weighting and standardisation methods, doubly-robust methods.</p></li>
-<li><p><strong>Evaluation of causal prediction models.</strong> Lectures and practical.<br>
-Performance metrics and their estimation.</p></li>
-</ul>
-</section>
-<section id="day-4" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-4">Day 4</h2>
-<ul>
-<li><p><strong>Advanced topics.</strong> Lectures.<br>
-Time to event outcomes and competing events, time varying treatments and confounding.</p></li>
-<li><p><strong>Case studies.</strong> Group discussion.</p></li>
-<li><p><strong>Case studies continued.</strong> Group discussion.</p></li>
-<li><p><strong>Advanced topics continued: clinical utility.</strong> Lecture.</p></li>
-<li><p><strong>Summary and review.</strong> With Q&amp;A.</p></li>
-</ul>
-</section>
-</section>
-<section id="exercises-and-practicals" class="level1 unnumbered">
-<h1 class="unnumbered">Exercises and practicals</h1>
-<p>Students will have time to work individually and/or in groups to apply the methods to a synthetic dataset. For several exercises, small groups will produce prediction models and send them to the teachers for evaluation.</p>
 
 
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-cowley2019methodological" class="csl-entry" role="listitem">
-Cowley, Laura E, Daniel M Farewell, Sabine Maguire, and Alison M Kemp. 2019. <span>“Methodological Standards for the Development and Evaluation of Clinical Prediction Rules: A Review of the Literature.”</span> <em>Diagnostic and Prognostic Research</em> 3 (1): 16.
-</div>
-<div id="ref-efthimiou2024developing" class="csl-entry" role="listitem">
-Efthimiou, Orestis, Michael Seo, Konstantina Chalkou, Thomas Debray, Matthias Egger, and Georgia Salanti. 2024. <span>“Developing Clinical Prediction Models: A Step-by-Step Guide.”</span> <em>Bmj</em> 386.
-</div>
-<div id="ref-gerds2008performance" class="csl-entry" role="listitem">
-Gerds, Thomas A, Tianxi Cai, and Martin Schumacher. 2008. <span>“The Performance of Risk Prediction Models.”</span> <em>Biometrical Journal: Journal of Mathematical Methods in Biosciences</em> 50 (4): 457–79.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

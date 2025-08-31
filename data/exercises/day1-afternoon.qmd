@@ -1,0 +1,178 @@
+---
+title: Practical day 1 afternoon
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor_options: 
+  chunk_output_type: console
+execute:
+  eval: false
+  echo: true
+---
+
+
+# Learning objectives
+
+
+1. Read about the data, read it into R, and examine the data and benchmark models
+2. Make your own prediction model using the training dataset
+3. Provide an estimate of some metric to quantify how well your model performs using test data or cross validation
+4. Predict the probability of the outcome in the validation set and send the predictions to the teachers. 
+
+# Data description
+
+We have synthesized data alike the training data behind the Steno type
+1 risk engine. The data are not real data but obtained by computer
+simulation for the sole purpose of illustrating the methods discussed
+during the workshop. Since we have simulated the data we have removed
+the obstacles from censoring and provide a binary outcome variable
+which indicates if CVD occured before the 5 years horizon where no
+occurrence means either death without CVD or alive without CVD.
+
+-   **Study population:** Adults with type 1 diabetes. It is recommended for patients to come
+    for regular follow-up visits every 4 months. These data represent
+    information available from the past year at the time that the
+    predictions are to be made (time 0), which includes some measurements
+    at 2 time points. The variable pid is a unique patient identifier.
+-   **Time zero:** Date of a screening visit at diabetes center
+-   **Outcome:** Cardiovascular disease within 5 years of time 0. The is coded
+    as 0 for no, 1 for yes, in the variable cvd<sub>5year</sub>
+-   **Predictors:** 
+    -   `age`: Age in years at the time 0
+    -   `sex_male`: Binary indicator of male sex (0 = female, 1 = male)
+    -   `diabetes_duration`: Time in years since diagnosis of type 1 diabetes
+    -   `smoking`: Binary indicator of current smoking status (0 = nonsmoker, 1 = smoker)
+    -   `motion`: Binary indicator of regular physical activity (0 = sedentary, 1 = some moderate physical activity)
+    -   `HBA1C_0`, `HBA1C_1`: Glycated hemoglobin, also called hemoglobin A1C value at two time points in mmol/mol. Smaller
+        values indicate better glycemic control.
+    -   `urine_albumin_0`, `urine_albumin_1`: The urine albumin to creatinine ratio, in mg/g. A larger relative
+        concentration of albumin in the urine is an indicator of poor kidney function
+    -   `LDL_0`, `LDL_1`: Low-density lipoprotein measurement in serum, in mmol/L.
+    -   `SBP_0`, `SBP_1`: Systolic blood pressure in mmHg
+    -   `eGFR_0`, `eGFR_1`: Estimated glomerular filtration rate, in $mL/min/1.73m^2$. An estimate of kidney function, larger
+        values means better kidney function
+    -   `statin`: indicator of starting statin use between times 0 and 1 (0 = not on statins, 1 = started on statins)
+
+
+# Exercises
+
+0.  Load the R package `riskRegression`
+
+```{r   }
+library(riskRegression) 
+```
+
+1.  Read the train and the test data into R
+
+```{r   }
+train <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-train.rds"))
+test <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-test.rds"))
+```
+
+2.  What is the prevalence of CVD 5 years after time zero?
+
+```{r   }
+100*mean(train$cvd_5year) 
+```
+
+3.  Note that the null model ignores the covariates and predicts the same risk to
+    everyone. It can be obtained with the `glm` function as follows:
+
+```{r   }
+null_model <- glm(cvd_5year~1,data = train, family = "binomial")
+predictRisk(null_model,newdata = test) 
+```
+
+4.  Fit a bench mark model using logistic regression including additive
+    effects of sex, age and diabetes duration
+
+```{r   }
+bench_model <- glm(cvd_5year~sex_male + age + diabetes_duration,data = train, family = "binomial") 
+```
+
+5.  Fit a model which resembles the formula of the Steno 1 risk engine using logistic regression
+
+```{r   }
+steno_model <- glm(cvd_5year~sex_male + age + diabetes_duration + smoking + motion +
+                  HBA1C_time1 + urine_albumin_time1 + LDL_time1 + SBP_time1 + eGFR_time1,
+                  data = train, family = "binomial") 
+```
+
+6.  Does the Steno model outperform the benchmark model in the train data? Use 10-fold cross-validation
+
+```{r   }
+x <- riskRegression::Score(list("Benchmark model" = bench_model,
+                                "Steno model" = steno_model),
+                           data = train,
+                           seed = 8,
+                           null.model = TRUE,
+                           formula = cvd_5year~1,
+                           split.method = "cv10",
+                           summary = "risk",
+                           plots = c("roc","cal"))
+summary(x)
+plotRisk(x)
+plotROC(x)
+plotCalibration(x) 
+```
+
+7.  Does the Steno model outperform the benchmark model in the test data?
+
+```{r   }
+y <- riskRegression::Score(list("Benchmark model" = bench_model,
+                                "Steno model" = steno_model),
+                           data = test,
+                           null.model = TRUE,
+                           formula = cvd_5year~1,
+                           summary = "risk",
+                           plots = c("roc","cal"))
+summary(y)
+plotRisk(y)
+plotROC(y)
+plotCalibration(y) 
+```
+
+8.  Use any method to make a new risk prediction model and compare it
+    to the Steno model on the test data. Note that the Score function
+    allows you to specify a vector with predicted risks. Here is an
+    example using random forests based on the R-package ranger.
+
+```{r   }
+library(ranger)
+rf <- ranger(cvd_5year~sex_male + age + diabetes_duration,data = train,
+             probability = TRUE,seed = 9)
+pred_ranger <- predict(rf,data = test)$predictions[,2]
+z <- riskRegression::Score(list("Benchmark model" = bench_model,
+                                "Steno model" = steno_model,
+                                "Random forest" = pred_ranger),
+                           data = test,
+                           null.model = TRUE,
+                           formula = cvd_5year~1,
+                           summary = "risk",
+                           plots = c("roc","cal"))
+summary(z)
+plotRisk(z)
+plotROC(z)
+plotCalibration(z) 
+```
+
+
+9. Once you have decided on your new risk prediction model, load the deployment dataset and produce predicted probabilities of cvd_5year. Insert them into a new variable in the dataset, save the result 
+
+```{r}
+valid <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-deployment.rds"))
+
+valid$riskest <- predict(rf, data = valid)$predictions[, 2]
+
+saveRDS(valid, file = stop("replace 'stop(\"replace ...\")' with a unique team filename ending in .rds"))
+```
+
+
+10. Send an email to michael.sachs@sund.ku.dk with the following information: 
+    
+    - The file you just saved as an attachment. It must contain at least the pid and riskest columns. 
+    - The name of the file that you attached. 
+    - Your team name. 
+    - An estimate of the AUC of your model from either cross-validation or the test dataset. 
+
