@@ -54,6 +54,13 @@ occurrence means either death without CVD or alive without CVD.
         values means better kidney function
     -   `statin`: indicator of starting statin use between times 0 and 1 (0 = not on statins, 1 = started on statins)
 
+## Links to datasets
+
+- [Training set](/data/exercises/data/type1-diabetes-train.rds): For developing your risk prediction model.
+- [Test set](/data/exercises/data/type1-diabetes-test.rds): For evaluating your risk prediction model. 
+- [Deployment set](/data/exercises/data/type1-diabetes-deployment.rds): For predicting unknown outcome and sending to the honest broker for testing.
+
+
 
 # Exercises
 
@@ -66,8 +73,8 @@ library(riskRegression)
 1.  Read the train and the test data into R
 
 ```{r   }
-train <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-train.rds"))
-test <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-test.rds"))
+train <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"))
+test <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"))
 ```
 
 2.  What is the prevalence of CVD 5 years after time zero?
@@ -161,7 +168,7 @@ plotCalibration(z)
 9. Once you have decided on your new risk prediction model, load the deployment dataset and produce predicted probabilities of cvd_5year. Insert them into a new variable in the dataset, save the result 
 
 ```{r}
-valid <- readRDS(url("https://smartbiomed.github.io/causal-prediction-workshop/data/exercises/data/type1-diabetes-deployment.rds"))
+valid <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-deployment.rds"))
 
 valid$riskest <- predict(rf, data = valid)$predictions[, 2]
 
