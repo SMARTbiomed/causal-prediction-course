@@ -102,7 +102,7 @@ bench_model <- glm(cvd_5year~sex_male + age + diabetes_duration,data = train, fa
 
 ```{r   }
 steno_model <- glm(cvd_5year~sex_male + age + diabetes_duration + smoking + motion +
-                  HBA1C_time1 + urine_albumin_time1 + LDL_time1 + SBP_time1 + eGFR_time1,
+                  HBA1C_0 + urine_albumin_0 + LDL_0 + SBP_0 + eGFR_0,
                   data = train, family = "binomial") 
 ```
 
