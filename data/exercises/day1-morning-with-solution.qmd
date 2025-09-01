@@ -1,0 +1,96 @@
+---
+title: "Day 1 Morning Exercise -- Solution"
+---
+
+# Exercise 1
+
+Consider the CVD risk prediction tool for type 1 diabetes (Steno
+Diabetes Center Copenhagen): <https://steno.shinyapps.io/T1RiskEngine/>
+
+
+## Answer the following questions:
+
+1.  Who is eligible to use this calculator?
+2.  At what occasion can people use this calculator (i.e., what is time zero)?
+3.  In what direction does the 5-year risk change when you change any of the predictor variables keeping the other predictor variables at a fixed value?
+4.  What other risk predictor variables does the Framingham CVD risk calculator use? <https://static.heart.org/riskcalc/app/index.html>
+
+## Think about and discuss the following with your nearest neighbors:
+
+5.  What possible applications does this medical risk prediction model have?
+6.  Which of the risk factors may change over time?
+7.  How old (relative to time zero) are the measurements of these risk factors allowed to be?
+8.  Which of the risk factors are modifiable?
+9.  Correspondingly what would be possible interventions?
+10. Decision making (for versus against an intervention) could be based on comparing the predicted 5-year risk to a fixed threshold, e.g., 10%. How would one incorporate lower and upper limits for the predicted risks to guide a person's decision?
+
+Answers to the questions:
+
+1.  Who is eligible to use this calculator?
+
+People with a type I diabetes diagnosis who are between 18 and 100
+years old without a previous CVD event.
+
+2.  At what occasion can people use this calculator (i.e., what is time zero)?
+
+This is not explicitly stated but it seems reasonable to assume that
+time zero is when the date of a measurement of the variables HbA1c,
+Systolic blood pressure, Albuminuria, eGFR, LDL.
+
+3.  In what direction does the 5-year risk change when you change any
+    of the predictor variables keeping the other predictor variables at
+    a fixed value?
+
+4.  Age: Risk increases
+5.  Sex: Men have higher risk
+6.  Diabetes duration: Risk increases
+7.  Systolic blood pressure: Risk increases
+8.  Albuminuria: Risk increases
+9.  LDL: Risk increases
+10. eGFR: Risk decreases
+11. Current smoker: Risk higher
+12. Regular excercise: Risk lower
+
+4.  What other risk predictor variables does the Framingham 
+    CVD risk calculator use? <https://static.heart.org/riskcalc/app/index.html>
+
+Total cholesterol, HDL cholesterol, Treatment with Statin, Treatment for Hypertension, Aspirin Therapy
+
+## Think about and discuss the following with your nearest neighbors:
+
+5.  What possible applications does this medical risk prediction model have?
+
+-  Inform patients
+-  Guide patients
+-  Select patients for RCTs
+-  Related research projects
+
+6.  Which of the risk factors may change over time?
+
+HbA1c, LDL, Albuminuria, eGFR, Systolic blood pressure, Regular excercise, Current smoker, Diabetes duration, Age
+
+7.  How old (relative to time zero) are the measurements of these risk factors allowed to be?
+
+This is not stated. Intuitively it seems that the measurements need to be recent.
+
+8.  Which of the risk factors are modifiable?
+
+Systolic blood pressure, albuminuria, eGFR, LDL, smoking, regular
+exercise
+
+9.  Correspondingly what would be possible interventions?
+
+Stop smoking, start regular exercised, treatment for hypertension,
+blood sugar control, dietary modification, statins, renal replacement
+therapy, dialysis.
+
+10. Decision making (for versus against an intervention) could be based
+    on comparing the predicted 5-year risk to a fixed threshold, e.g.,
+    10%. How would one incorporate lower and upper limits for the
+    predicted risks to guide a person's decision?
+
+A conservative strategy would only recommend treatment when the lower
+limit of the predicted risk is above the threshold, an aggressive
+strategy would recommend treatment when the upper limit exceeds the
+threshold.
+

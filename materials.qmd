@@ -14,6 +14,7 @@ Coming soon!
 1. [Lecture 1: Prediction models in medicine, Michael Sachs (pdf)](/data/lectures/day1-lecture1.pdf)
 2. [Lecture 2: Medical risk prediction models, Thomas Gerds (pdf)](/data/lectures/day1-lecture2.pdf)
 3. [Exercise 1: The Steno Risk engine](/data/exercises/day1-morning.qmd)
+    - [Solutions](/data/exercises/day1-morning-with-solution.qmd)
 
 
 ## Afternoon
