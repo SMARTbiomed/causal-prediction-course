@@ -18,7 +18,7 @@
     "href": "data/exercises/day2-morning.html",
     "title": "Day 2 Morning Exercise",
     "section": "",
-    "text": "Causal DAGs\n\nDraw a causal DAG for the example data you used yesterday for the predictions.\nDo you think this is a causal DAG? Meaning are all common causes represented, or can you think of common causes that are not in your current figure? Do you have any arrows you are unsure of the direction?\nDo you have any colliders in your DAG?\nConsider the variable statin as the exposure and the outcome of . Please write down your estimand of interest using counterfactuals.\nGiven the DAG, are the assumptions needed to identify your estimand fulfilled?\nIf so, how would you estimate your estimand, if not, what is the problem?"
+    "text": "Causal DAGs\n\nDraw a causal DAG for the example data you used yesterday for the predictions.\nDo you think this is a causal DAG? Meaning are all common causes represented, or can you think of common causes that are not in your current figure? Do you have any arrows you are unsure of the direction?\nDo you have any colliders in your DAG?\nConsider the variable statin as the exposure and the outcome of cvd_5year. Please write down your estimand of interest using counterfactuals.\nGiven the DAG, are the assumptions needed to identify your estimand fulfilled?\nIf so, how would you estimate your estimand, if not, what is the problem?"
   },
   {
     "objectID": "data/exercises/day1-morning.html",

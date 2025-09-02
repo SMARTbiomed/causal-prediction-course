@@ -7,6 +7,6 @@ title: "Day 2 Morning Exercise"
 - Draw a causal DAG for the example data you used yesterday for the predictions. 
 - Do you think this is a causal DAG? Meaning are all common causes represented, or can you think of common causes that are not in your current figure? Do you have any arrows you are unsure of the direction? 
 - Do you have any colliders in your DAG? 
-- Consider the variable statin as the exposure and the outcome of \texttt{cvd\_5year}. Please write down your estimand of interest using counterfactuals.
+- Consider the variable statin as the exposure and the outcome of `cvd_5year`. Please write down your estimand of interest using counterfactuals.
 - Given the DAG, are the assumptions needed to identify your estimand fulfilled? 
 - If so, how would you estimate your estimand, if not, what is the problem? 
