@@ -143,7 +143,7 @@ will look at the MFMU prediction model: [Vaginal Birth After Cesarean
 
 The model development is described in the paper by [Grobman
 et.a](https://doi.org/10.1016/j.ajog.2021.05.021)l. An annotated version
-of this paper is available on the course's github page.
+of this paper is available [at this link](/data/exercises/paperGrobman_annotated.pdf).
 
 1.  Read the relevant parts in the introduction and discussion of the
     paper (highlighted in yellow in the annotated paper) and determine

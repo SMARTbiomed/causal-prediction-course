@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -177,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="target-participants" class="level1">
 <h1>Target Participants</h1>
 <p>PhD students, postdocs, and faculty in biostatistics, machine learning, epidemiology, bioinformatics, and medicine interested in using risk predictions for decision making. In particular, the target participants are those involved in (or planning to be involved in) research projects involving risk prediction for decision making and who would like to learn how causal thinking can improve the development and evaluation of their models.</p>
-<p>Participants should have a basic knowledge of statistics or machine learning and have a working understanding of R. Participants should have some familiarity with regular prediction methods, including performance metrics, as reviewed in these papers <span class="citation" data-cites="efthimiou2024developing cowley2019methodological gerds2008performance">[@efthimiou2024developing; @cowley2019methodological; @gerds2008performance]</span>.</p>
+<p>Participants should have a basic knowledge of statistics or machine learning and have a working understanding of R. Participants should have some familiarity with regular prediction methods, including performance metrics, as reviewed in these papers <span class="citation" data-cites="efthimiou2024developing cowley2019methodological gerds2008performance">(<a href="#ref-efthimiou2024developing" role="doc-biblioref">Efthimiou et al. 2024</a>; <a href="#ref-cowley2019methodological" role="doc-biblioref">Cowley et al. 2019</a>; <a href="#ref-gerds2008performance" role="doc-biblioref">Gerds, Cai, and Schumacher 2008</a>)</span>.</p>
 </section>
 <section id="content-and-structure" class="level1">
 <h1>Content and Structure</h1>
@@ -250,9 +270,20 @@ Time to event outcomes and competing events, time varying treatments and confoun
 <p>Students will have time to work individually and/or in groups to apply the methods to a synthetic dataset. For several exercises, small groups will produce prediction models and send them to the teachers for evaluation.</p>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cowley2019methodological" class="csl-entry" role="listitem">
+Cowley, Laura E, Daniel M Farewell, Sabine Maguire, and Alison M Kemp. 2019. <span>“Methodological Standards for the Development and Evaluation of Clinical Prediction Rules: A Review of the Literature.”</span> <em>Diagnostic and Prognostic Research</em> 3 (1): 16.
+</div>
+<div id="ref-efthimiou2024developing" class="csl-entry" role="listitem">
+Efthimiou, Orestis, Michael Seo, Konstantina Chalkou, Thomas Debray, Matthias Egger, and Georgia Salanti. 2024. <span>“Developing Clinical Prediction Models: A Step-by-Step Guide.”</span> <em>Bmj</em> 386.
+</div>
+<div id="ref-gerds2008performance" class="csl-entry" role="listitem">
+Gerds, Thomas A, Tianxi Cai, and Martin Schumacher. 2008. <span>“The Performance of Risk Prediction Models.”</span> <em>Biometrical Journal: Journal of Mathematical Methods in Biosciences</em> 50 (4): 457–79.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
