@@ -33,6 +33,9 @@ Coming soon!
 
 ## Afternoon
 
+1. [Lecture 7: Estimands for causal prediction, Nan van Geloven (pdf)](/data/lectures/day2-afternoon-estimands.pdf)
+2. [Exercise 4: Estimands for causal prediction, Nan van Geloven](/data/exercises/day2-afternoon.qmd)
+
 # Day 3
 
 

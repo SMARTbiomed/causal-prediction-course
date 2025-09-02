@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Course materials – Causal prediction for medical decision making: Methods and practice</title>
+<title>Practical day 3 afternoon: evaluation of causal prediction models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,135 +20,95 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab9c3b7d2c032cbe6f125d1fc4be32e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+<script src="day3-afternoon-practical_files/libs/clipboard/clipboard.min.js"></script>
+<script src="day3-afternoon-practical_files/libs/quarto-html/quarto.js"></script>
+<script src="day3-afternoon-practical_files/libs/quarto-html/popper.min.js"></script>
+<script src="day3-afternoon-practical_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="day3-afternoon-practical_files/libs/quarto-html/anchor.min.js"></script>
+<link href="day3-afternoon-practical_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="day3-afternoon-practical_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="day3-afternoon-practical_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="day3-afternoon-practical_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="day3-afternoon-practical_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
   }
-}</script>
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Causal prediction for medical decision making: Methods and practice</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./description.html"> 
-<span class="menu-text">Course description</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./materials.html" aria-current="page"> 
-<span class="menu-text">Schedule and materials</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
-<span class="menu-text">References and other resources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./conduct.html"> 
-<span class="menu-text">Code of conduct</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#day-1" id="toc-day-1" class="nav-link active" data-scroll-target="#day-1">Day 1</a>
-  <ul class="collapse">
-  <li><a href="#morning" id="toc-morning" class="nav-link" data-scroll-target="#morning">Morning</a></li>
-  <li><a href="#afternoon" id="toc-afternoon" class="nav-link" data-scroll-target="#afternoon">Afternoon</a></li>
-  </ul></li>
-  <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a>
-  <ul class="collapse">
-  <li><a href="#morning-1" id="toc-morning-1" class="nav-link" data-scroll-target="#morning-1">Morning</a></li>
-  <li><a href="#afternoon-1" id="toc-afternoon-1" class="nav-link" data-scroll-target="#afternoon-1">Afternoon</a></li>
-  </ul></li>
-  <li><a href="#day-3" id="toc-day-3" class="nav-link" data-scroll-target="#day-3">Day 3</a>
-  <ul class="collapse">
-  <li><a href="#morning-2" id="toc-morning-2" class="nav-link" data-scroll-target="#morning-2">Morning</a></li>
-  <li><a href="#afternoon-2" id="toc-afternoon-2" class="nav-link" data-scroll-target="#afternoon-2">Afternoon</a></li>
-  </ul></li>
-  <li><a href="#day-4" id="toc-day-4" class="nav-link" data-scroll-target="#day-4">Day 4</a>
-  <ul class="collapse">
-  <li><a href="#morning-3" id="toc-morning-3" class="nav-link" data-scroll-target="#morning-3">Morning</a></li>
-  <li><a href="#afternoon-3" id="toc-afternoon-3" class="nav-link" data-scroll-target="#afternoon-3">Afternoon</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Course materials</h1>
+<h1 class="title">Practical day 3 afternoon: evaluation of causal prediction models</h1>
 </div>
 
 
@@ -165,69 +125,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon!</p>
-<section id="day-1" class="level1">
-<h1>Day 1</h1>
-<section id="morning" class="level2">
-<h2 class="anchored" data-anchor-id="morning">Morning</h2>
-<ol type="1">
-<li><a href="./data/lectures/day1-lecture1.pdf">Lecture 1: Prediction models in medicine, Michael Sachs (pdf)</a></li>
-<li><a href="./data/lectures/day1-lecture2.pdf">Lecture 2: Medical risk prediction models, Thomas Gerds (pdf)</a></li>
-<li><a href="./data/exercises/day1-morning.html">Exercise 1: The Steno Risk engine</a>
+<section id="aims" class="level2">
+<h2 class="anchored" data-anchor-id="aims">Aims</h2>
 <ul>
-<li><a href="./data/exercises/day1-morning-with-solution.html">Solutions</a></li>
-</ul></li>
-</ol>
+<li><p>Learn how to evaluate the counterfactual performance of a prediction model using inverse probability weighting.</p></li>
+<li><p>Compare counterfactual performance of a regular prediction model (developed on day 1) to the counterfactual performance of a causal prediction model you developed in the morning of day 3.</p></li>
+</ul>
 </section>
-<section id="afternoon" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon">Afternoon</h2>
-<ol type="1">
-<li><a href="./data/lectures/day1-lecture3.pdf">Lecture 3: Obstacles and pitfalls, Thomas Gerds (pdf)</a></li>
-<li><a href="./data/lectures/day1-lecture4.pdf">Lecture 4: Learning algorithms and validation, Michael Sachs (pdf)</a></li>
-<li><a href="./data/exercises/day1-afternoon.html">Exercise 2: Developing and validating your own models</a></li>
-<li><a href="./data/lectures/day1-lecture5.pdf">Lecture 5: Introduction to causal prediction, Ruth Keogh (pdf)</a></li>
-</ol>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>1 Read the train and test data into R</p>
+<p>2a. Fit the (non-causal) steno prediction model you fitted on day 1 to the train set and use it to make predictions on the test set.</p>
+<p>2b. Also fit the causal prediction model you fitted this morning to the train set using g-computation (where you used two separate outcome models) and use it to make predictions on the test set under the intervention of initiating statins. See morning exercise 5c.</p>
+<p>2c. Compare the predictions from both models in a scatterplot. Which one is lowest on average?</p>
 </section>
+<section id="regular-performance-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="regular-performance-assessment">Regular performance assessment</h2>
+<p>3a. First assess regular performance of both models in the test set by calculating Brier score. Note that on day 1 we used the function <code>riskRegression::Score</code> to calculate Brier score.</p>
+<p>3b. Verify that the ‘manual function’ below gives the same point estimate for Brier score as the Score function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>brier_steno <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">nrow</span>(test) <span class="sc">*</span> <span class="fu">sum</span> ((test<span class="sc">$</span>pred_steno <span class="sc">-</span> test<span class="sc">$</span>cvd_5year)<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>brier_gcomp <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">nrow</span>(test) <span class="sc">*</span> <span class="fu">sum</span> ((test<span class="sc">$</span>pred_A1c <span class="sc">-</span> test<span class="sc">$</span>cvd_5year)<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(brier_steno, brier_gcomp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>3c. Which of the two models appears to perform better on the observed data distribution, judging from the point estimates of Brier score?</p>
 </section>
-<section id="day-2" class="level1">
-<h1>Day 2</h1>
-<section id="morning-1" class="level2">
-<h2 class="anchored" data-anchor-id="morning-1">Morning</h2>
-<ol type="1">
-<li><a href="./data/lectures/day2-lecture1.pdf">Lecture 6: Introduction to causal inference, Erin Gabriel (pdf)</a></li>
-<li><a href="./data/exercises/day2-morning.html">Exercise 3: Causal DAGs</a></li>
-</ol>
-</section>
-<section id="afternoon-1" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon-1">Afternoon</h2>
-<ol type="1">
-<li><a href="./data/lectures/day2-afternoon-estimands.pdf">Lecture 7: Estimands for causal prediction, Nan van Geloven (pdf)</a></li>
-<li><a href="./data/exercises/day2-afternoon.html">Exercise 4: Estimands for causal prediction, Nan van Geloven</a></li>
-</ol>
-</section>
-</section>
-<section id="day-3" class="level1">
-<h1>Day 3</h1>
-<section id="morning-2" class="level2">
-<h2 class="anchored" data-anchor-id="morning-2">Morning</h2>
-</section>
-<section id="afternoon-2" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon-2">Afternoon</h2>
-</section>
-</section>
-<section id="day-4" class="level1">
-<h1>Day 4</h1>
-<section id="morning-3" class="level2">
-<h2 class="anchored" data-anchor-id="morning-3">Morning</h2>
-</section>
-<section id="afternoon-3" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon-3">Afternoon</h2>
-
-
-</section>
+<section id="counterfactual-performance-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="counterfactual-performance-assessment">Counterfactual performance assessment</h2>
+<p>Now we continue with counterfactual performance of both models in the test set.</p>
+<p>4a. Assuming that the test data are obtained from the same setting as the train data, what variables are in <span class="math inline">\(L\)</span> and need to be adjusted for when assessing performance?</p>
+<p>4.b Calculate inverse probability weights for use of statins in the <code>test set</code> and make a histogram to assess the distribution of the weights.</p>
+<p>5a. Calculate counterfactual Brier score for both candidate models under the scenario where all patients in the test set would initiate statins using inverse probability weighting. You can use a weighted version of the earlier given manual code for the Brier score.</p>
+<p>5b. Compare results from both models. Which one seems to perform better in a treated scenario?</p>
+<p>6. Calculate a calibration curve for the Steno model, once in the regular way and once using weighted observed risks tailored to a scenario with statin initiation. We again provide manual code in the solutions, which you could compare to the Score output from day 1. Note our manual code here uses a loess smoother while Score uses a nearest neighbor smoother by default).</p>
+<p>7. Now calculate a calibration curve for the gcomp model, once in the regular way and once using weighted observed risks, tailored to a scenario with statin initiation.</p>
 </section>
 
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -263,7 +200,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -295,27 +243,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -323,7 +251,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -420,6 +348,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -646,28 +575,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="mailto:smartbiomed_info@sund.ku.dk">
-<p>Contact course director</p>
-</a>
-  </li>  
-</ul>
-    </div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

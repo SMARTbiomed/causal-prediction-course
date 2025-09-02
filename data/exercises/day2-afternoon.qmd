@@ -1,0 +1,173 @@
+---
+title: Day 2 afternoon 'pen and paper' practical
+---
+
+**Estimands for causal prediction**
+
+**Part 1: QRisk**
+
+*QRisk is a risk prediction model that provides estimates of the 10-year
+risk of having a heart attack or stroke. The QRisk tool is available
+online at <https://www.qrisk.org/index.php>*
+
+1.  Use the online calculator for a person A with the following
+     characteristics (you can leave the other information blank):
+
+Person A: 45 years old, male, Indian ethnicity, non-smoker, without
+diabetes.
+What is this person's risk of developing a heart attack or stroke over
+the next 10 years? Consider another individual, person B, who is
+similar to person A, except they are on blood pressure treatment.
+
+Person B: 45 years old, male, Indian ethnicity, non-smoker, without
+diabetes, on blood pressure medication.
+
+What is this person's predicted risk of developing a heart attack or
+stroke over the next 10 years, and how does it differ from the risk
+for person A?
+
+2.  Discuss some possible reasons for the differences in the risks for
+     person A and person B.
+
+3.  Based on these findings, discuss whether you would suggest that
+     person B should stop taking their blood pressure treatment.
+
+4.  Suppose person A has a systolic blood pressure of 150, which is
+     considered high. Would you advise against person A initiating
+     blood pressure medication based on the predictions from this
+     model?
+
+5.  What do you conclude about using this model to inform whether a
+     person should start or stop blood pressure lowering medication?
+
+
+
+**Part 2: Developing an interventional risk prediction model for blood
+pressure treatment**
+
+*In this part we will suppose that we would like to develop a model that
+could help individuals to decide about whether they should consider
+initiating blood pressure medication in order to lower their risk of
+having a heart attack or stroke.*
+
+1.  Discuss what you might want such a risk prediction model to do in
+    more detail by considering the elements in the table below. This
+    table is taken from Luijken et al. 2024.
+    <https://doi.org/10.1002/bimj.70011>.
+
++--------------------------------+------------------------------------+
+| **Estimand element**           | **Questions that help formulate    |
+|                                | the estimand element**             |
++================================+====================================+
+| Target population              | -   To which individuals will the  |
+|                                |      prediction model be applied?  |
+|                                |                                    |
+|                                | -   In which health care setting   |
+|                                |      will the prediction model be  |
+|                                |      applied?                      |
++--------------------------------+------------------------------------+
+| Moment(s) of intended use      | -   At which moment(s) is the      |
+|                                |      prediction model              |
+|                                |      (re)consulted to inform the   |
+|                                |      intervention decision?        |
++--------------------------------+------------------------------------+
+| Intervention options           | -   Which intervention options are |
+|                                |      relevant at the moment(s) of  |
+|                                |      making the intervention       |
+|                                |      decision?                     |
+|                                |                                    |
+|                                | -   For how long should the        |
+|                                |      intervention strategy be      |
+|                                |      fixed?                        |
+|                                |                                    |
+|                                | -   Should the duration to fix the |
+|                                |      intervention option be        |
+|                                |      aligned with the time till    |
+|                                |      next moment of prediction?    |
++--------------------------------+------------------------------------+
+| Outcome and prediction horizon | -   Which outcome(s) are           |
+|                                |      informative for the           |
+|                                |      intervention decision?        |
+|                                |                                    |
+|                                | -   What prediction horizon        |
+|                                |      provides important            |
+|                                |      information for the           |
+|                                |      intervention decision: a      |
+|                                |      short-term or long-term       |
+|                                |      horizon?                      |
+|                                |                                    |
+|                                | -   Should the outcome be defined  |
+|                                |      differently because of the    |
+|                                |      specified intervention        |
+|                                |      option(s)?                    |
+|                                |                                    |
+|                                | -   Should the prediction horizon  |
+|                                |      be aligned with the time      |
+|                                |      till next moment of           |
+|                                |      prediction?                   |
++--------------------------------+------------------------------------+
+| Predictor(s)                   | -   Which clinical and/or          |
+|                                |     demographic patient factors    |
+|                                |     are predictive of the          |
+|                                |     outcome of interest?           |
+|                                |                                    |
+|                                | -   Which measurements are         |
+|                                |      available at the moment(s)    |
+|                                |      of intended use?              |
++--------------------------------+------------------------------------+
+
+2.  Thinking about the causal effect of initiating blood pressure
+    treatment on risk of heart attack or stroke, draw (by hand) a simple
+    causal diagram (a directed acyclic graph -- DAG) that might be
+    expected to hold in observational data collected. Involve he
+    following variables: sex, smoking status, blood pressure, blood
+    pressure medication use, and having a heart attack or stroke.
+
+In the population to which the diagram refers, you can assume everyone
+is aged 45 and of the same ethnicity, to avoid needing to include these
+variables.
+
+Are there any other variables that you would add to the diagram?
+
+3.  Can you indicate which variables would need to be adjusted for when
+    targeting the estimand focused on informing initiation of blood
+    pressure medication?
+
+**Part 3. Prediction model for successful vaginal delivery**
+
+Several models exist that predict a pregnant woman's risk of a
+successful vaginal delivery (versus an emergency c-section), especially
+in woman who already had a c-section in a previous pregnancy. Here we
+will look at the MFMU prediction model: [Vaginal Birth After Cesarean
+(MFMU)](https://www.mdcalc.com/calc/10433/vaginal-birth-after-cesarean-vbac#evidence)
+
+The model development is described in the paper by [Grobman
+et.a](https://doi.org/10.1016/j.ajog.2021.05.021)l. An annotated version
+of this paper is available on the course's github page.
+
+1.  Read the relevant parts in the introduction and discussion of the
+    paper (highlighted in yellow in the annotated paper) and determine
+    the treatment decision the model is meant to inform. Which
+    intervention options can patients choose between, and when?
+
+2.  Now review the relevant parts in the methods section and write down
+    the elements of the estimand targeted by the current model in the
+    second column of the table below.
+
+3.  Assess the relevance of the current estimand (question 2) to the
+    treatment decision described in question 1.
+
+4.  Formulate an alternative estimand that would be better aligned to
+    the treatment decision the model aims to inform by writing down
+    adjusted estimand elements in the third column of the table below.
+
+5.  Suggest changes to the design of the study that would allow us to
+    target the estimand chosen in question 4.
+
+  **Estimand element**             **Current estimand targeted by Grobman et al.**   **Alternative estimand better aligned to treatment decision**
+  -------------------------------- ------------------------------------------------- ---------------------------------------------------------------
+  Target population                                                                  
+  Moment(s) of intended use                                                          
+  Outcome and prediction horizon                                                     
+  Predictor(s)                                                                       
+  Intervention options                                                               

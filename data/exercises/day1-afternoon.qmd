@@ -74,7 +74,7 @@ library(riskRegression)
 
 ```{r   }
 train <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"))
-test <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"))
+test <- readRDS(url("https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-test.rds"))
 ```
 
 2.  What is the prevalence of CVD 5 years after time zero?
