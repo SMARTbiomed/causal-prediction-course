@@ -43,11 +43,12 @@ Coming soon!
 ## Morning
 
 1. [Lecture 8: Estimation, Karla Diaz-Ordaz (pdf)](/data/lectures/EstimationLecture_KPH_shortcourse_causalpred_v1.pdf)
+2. [Exercise 5: Estimation](/data/exercises/day3-morning.qmd)
 
 ## Afternoon
 
 1. [Lecture 9: Evaluation, Nan van Geloven (pdf)](/data/lectures/day3-afternoon-lecture.pdf)
-2. [Exercise 5: Evaluation](/data/exercises/day3-afternoon-practical_NO_SOLUTIONS.html)
+2. [Exercise 6: Evaluation](/data/exercises/day3-afternoon-practical_NO_SOLUTIONS.html)
 
 # Day 4
 
