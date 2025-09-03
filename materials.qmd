@@ -44,6 +44,7 @@ Coming soon!
 
 1. [Lecture 8: Estimation, Karla Diaz-Ordaz (pdf)](/data/lectures/EstimationLecture_KPH_shortcourse_causalpred_v1.pdf)
 2. [Exercise 5: Estimation](/data/exercises/day3-morning.qmd)
+    - [Solution](/data/exercises/day3-morning-solutions.qmd)
 
 ## Afternoon
 

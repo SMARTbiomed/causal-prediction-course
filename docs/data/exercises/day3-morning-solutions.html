@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Causal prediction for medical decision making. Practicals, day 3, morning. – Causal prediction for medical decision making: Methods and practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ab9c3b7d2c032cbe6f125d1fc4be32e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Causal prediction for medical decision making: Methods and practice</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../description.html"> 
+<span class="menu-text">Course description</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../materials.html"> 
+<span class="menu-text">Schedule and materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html"> 
+<span class="menu-text">References and other resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../conduct.html"> 
+<span class="menu-text">Code of conduct</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Causal prediction for medical decision making. Practicals, day 3, morning.</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li><p>To use a DAG to decide which variables should be included in an analysis in order to develop a causal prediction model for predicting the risk of CVD death if a person starts statins and if they do not start statins</p></li>
+<li><p>To develop a causal prediction model using g-formula and inverse probability weighting (IPW) approaches for implementation in a test data set in which the same variables are observed as in the training data set</p></li>
+<li><p>To develop a causal prediction model for a situation in which not all variables available in the training data set are available in the deployment data</p></li>
+</ul>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>In this practical we will continue to use the simulated data on people with type 1 diabetes. Interest lies in obtaining predictions of the 5-year risk of CVD death if a person were to start using statins and if they were not to start using statins. A more detailed specification for the causal prediction model is given in the table below.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Estimand element</strong></td>
+<td><strong>Specification</strong></td>
+</tr>
+<tr class="even">
+<td>Target population</td>
+<td>Adults with type 1 diabetes who have not yet started using statins.</td>
+</tr>
+<tr class="odd">
+<td>Time point of intended use</td>
+<td>Attendance at a screening visit at the diabetes center</td>
+</tr>
+<tr class="even">
+<td>Outcome and prediction horizon</td>
+<td>CVD death up to 5 years</td>
+</tr>
+<tr class="odd">
+<td>Predictors</td>
+<td>LDL, SBP, motion, polygenic risk score, sex, age, diabetes duration, smoking.</td>
+</tr>
+<tr class="even">
+<td>Treatment options</td>
+<td><p>(i) Start using statins</p>
+<p>(ii) Do not start using statins</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<ol type="1">
+<li>Using the information provided in the table above write down the causal estimands of interest, following the notation used in the lecture slides.</li>
+</ol>
+<p><strong>Solution:</strong> The estimands of interest are <span class="math inline">\(\Pr(Y^{1}=1| X^*)\)</span> and <span class="math inline">\(\Pr(Y^{0}=1|X^*)\)</span> where <span class="math inline">\(Y^{1}\)</span> denotes the counterfactual outcome <span class="math inline">\(Y\)</span> (CVD death within 5 years) under statin treatment, <span class="math inline">\(Y^{0}\)</span> denotes the counterfactual outcome <span class="math inline">\(Y\)</span> under no statin treatment. The predictors <span class="math inline">\(X^*\)</span> are LDL, motion, polygenic risk score, sex, age, diabetes duration, smoking. The estimands could also be written in terms of expectations as <span class="math inline">\(E(Y^{1}| X^*)\)</span> and <span class="math inline">\(E(Y^{0}| X^*)\)</span>.</p>
+<ol start="2" type="1">
+<li><p>Based on the DAG you used in yesterday’s practical, we now consider which variables would need to to be included in an analysis in order to develop the causal prediction model, or in other words to enable estimation of <span class="math inline">\(\Pr(Y^{a}=1| X^*)\)</span> (<span class="math inline">\(a=0,1\)</span>) from the data.</p>
+<ol type="a">
+<li><p>What are the <span class="math inline">\(L\)</span> variables and what are the <span class="math inline">\(P\)</span> variables?</p></li>
+<li><p>Write your causal estimand from question 1 in terms of the observed variables, and state your assumptions.</p></li>
+</ol></li>
+</ol>
+<p><strong>Solution:</strong> The <span class="math inline">\(L\)</span> variables (confounders of statin use and the outcome) are <code>LDL_0</code>, <code>motion</code>, <code>steno_prs</code>. The <span class="math inline">\(P\)</span> variables (predictors of the outcome but not of statin use) are <code>sex_male</code>, <code>age</code>, <code>diabetes_duration</code>, <code>smoking,</code> <code>SBP_0</code>.</p>
+<p>The causal estimands can be written as: <span class="math inline">\(\Pr(Y^{1}=1| X^*)=\Pr(Y^{1}=1|L,P)=\Pr(Y=1|A=1, L,P)\)</span> and <span class="math inline">\(\Pr(Y^{0}=1| X^*)=\Pr(Y^{0}=1|L,P)=\Pr(Y=1|A=0, L,P)\)</span>. Writing the estimands in terms of the observed data relies on the assumption that <span class="math inline">\(X^*=(L,P)\)</span> are sufficient to control for confounding of the association between statin use and the outcomes, and the consistency assumption.</p>
+<ol start="3" type="1">
+<li>Consider the prediction model that you developed in the practical on Day 1 (afternoon). Is it suitable for making causal predictions, i.e.&nbsp;for estimating your estimand specified in question 1 above? Discuss why or why not.</li>
+</ol>
+<p><strong>Solution:</strong> Points to consider are:</p>
+<ul>
+<li><p>What was the ‘time zero’ for your model, and does this align with the time at which you would wish to make the decision about statin use?</p></li>
+<li><p>Did your model include all the necessary <span class="math inline">\(L\)</span> variables?</p></li>
+<li><p>Did your model include any variables on the causal pathway between statin use and the outcome?</p></li>
+</ul>
+<ol start="4" type="1">
+<li>Read the training data and the test data into R.</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-test.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li><p>Causal prediction modelling using the g-formula:</p>
+<ol type="a">
+<li><p>Using the g-formula approach develop a causal-prediction model using the training data that will enable you to estimate the estimand in 1.</p></li>
+<li><p>What assumptions are you making?</p></li>
+<li><p>Based on your model from (b), obtain an estimate of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual in the test data. Compare the estimates of risk under the two treatment options.</p></li>
+</ol></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ol type="a">
+<li></li>
+</ol>
+<p>We fit a logistic regression model including <code>cvd_5year</code> as the outcome <span class="math inline">\(Y\)</span>, separately for people with <span class="math inline">\(A=1\)</span> (<code>statin=1</code>)and people with <span class="math inline">\(A=0\)</span> (<code>statin=0</code>). The <span class="math inline">\(L\)</span> variables and <span class="math inline">\(P\)</span> variables (and hence <span class="math inline">\(X^*=\{L,P\}\)</span> are as given in Question 2. A different model is discussed below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod_A1<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,],<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = cvd_5year ~ LDL_0 + motion + steno_prs + sex_male + 
+    age + diabetes_duration + smoking + SBP_0, family = "binomial", 
+    data = train[train$statin == 1, ])
+
+Coefficients:
+                    Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)        -24.16044    5.46877  -4.418 9.97e-06 ***
+LDL_0                0.48054    0.21240   2.262   0.0237 *  
+motion              -0.30681    0.86969  -0.353   0.7243    
+steno_prs           -0.03221    0.24797  -0.130   0.8966    
+sex_male             0.51395    0.52020   0.988   0.3232    
+age                  0.03022    0.06710   0.450   0.6524    
+diabetes_duration    0.19151    0.07798   2.456   0.0141 *  
+smoking            -10.81774 1463.09240  -0.007   0.9941    
+SBP_0                0.09547    0.03852   2.478   0.0132 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 199.98  on 253  degrees of freedom
+Residual deviance: 134.47  on 245  degrees of freedom
+AIC: 152.47
+
+Number of Fisher Scoring iterations: 16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_A0<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">0</span>,],<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_A0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = cvd_5year ~ LDL_0 + motion + steno_prs + sex_male + 
+    age + diabetes_duration + smoking + SBP_0, family = "binomial", 
+    data = train[train$statin == 0, ])
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)       -25.18343    4.72147  -5.334 9.62e-08 ***
+LDL_0              -0.04390    0.18213  -0.241 0.809527    
+motion             -0.32112    0.55119  -0.583 0.560169    
+steno_prs           0.61979    0.21119   2.935 0.003338 ** 
+sex_male            0.59437    0.41106   1.446 0.148191    
+age                 0.03546    0.05593   0.634 0.526079    
+diabetes_duration   0.18992    0.07170   2.649 0.008078 ** 
+smoking             0.54284    1.15971   0.468 0.639724    
+SBP_0               0.12666    0.03315   3.821 0.000133 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 300.29  on 745  degrees of freedom
+Residual deviance: 219.42  on 737  degrees of freedom
+AIC: 237.42
+
+Number of Fisher Scoring iterations: 7</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<ul>
+<li><p>We are assuming that the <span class="math inline">\(L\)</span> variables are sufficient to control for confounding of the association between statins and CVD, i.e.&nbsp;that there are no confounders that are unaccounted for in the model.</p></li>
+<li><p>We are also making modelling assumptions, which include that the continuous <span class="math inline">\(L\)</span> variable (<code>LDL_0</code>) has been entered into the model with the correct functional form. Adding a spline term could be a good idea, for example, though we do not use any splines for the continuous variables here due to the limited sample size.</p></li>
+<li><p>It does not matter whether the <span class="math inline">\(P\)</span> variables are entered in the correct form into the model - using an incorrect form will impact of predictive performance but will not invalidate the models as estimators for the estimand of interest.</p></li>
+<li><p>An alternative would be to fit a combined model in the whole training data including <span class="math inline">\(A\)</span> as a predictor, rather than fitting separate models for <span class="math inline">\(A=0,1\)</span>. The alternative model is fitted below. Compared with the separate models, this makes the additional assumption that there are no interactions between treatment use (<code>statin</code>) and any of the <span class="math inline">\(X^*\)</span> variables included in the model.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>statin<span class="sc">+</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = cvd_5year ~ statin + LDL_0 + motion + steno_prs + 
+    sex_male + age + diabetes_duration + smoking + SBP_0, family = "binomial", 
+    data = train)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)       -23.50461    3.45946  -6.794 1.09e-11 ***
+statin             -0.64374    0.38572  -1.669  0.09514 .  
+LDL_0               0.18286    0.13316   1.373  0.16966    
+motion             -0.21568    0.43878  -0.492  0.62304    
+steno_prs           0.37423    0.15519   2.412  0.01589 *  
+sex_male            0.45402    0.31421   1.445  0.14847    
+age                 0.03570    0.04255   0.839  0.40148    
+diabetes_duration   0.18038    0.05132   3.515  0.00044 ***
+smoking             0.74341    1.10874   0.670  0.50254    
+SBP_0               0.10969    0.02459   4.461 8.15e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 517.56  on 999  degrees of freedom
+Residual deviance: 364.45  on 990  degrees of freedom
+AIC: 384.45
+
+Number of Fisher Scoring iterations: 7</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<p>Here we illustrate obtaining predictions first based on <code>mod_A1</code> and <code>mod_A0</code> (i.e.&nbsp;the models fitted separately in the two statin treatment groups) and second using model <code>mod</code> (which included <code>statin</code> as a covariate).</p>
+<p>Based on the model <code>mod</code>, which included <code>statin</code> as a covariate, the estimates of risk under statin use are all lower than the estimates of risk under no statin use. Based on the models <code>mod_A1</code> and <code>mod_A0</code>, in which the models were fitted separately in the two statin treatment groups, the estimates of risk under statin use tend to be lower than the estimates of risk under no statin use, but there are a few individuals with a higher estimated risk under statin use compared to non-use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtaining predictions using mod_A1 and mod_A0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pred_A1<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_A1,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pred_A0<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_A0,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtaining predictions using mod</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#First create versions of the test data in which statin is set to 1 for everyone and in which statin is set to 0 for everyone</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>test_A1<span class="ot">&lt;-</span>test</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>test_A1<span class="sc">$</span>statin<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>test_A0<span class="ot">&lt;-</span>test</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>test_A0<span class="sc">$</span>statin<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>pred_A1b<span class="ot">&lt;-</span><span class="fu">predict</span>(mod,<span class="at">newdata=</span>test_A1,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>pred_A0b<span class="ot">&lt;-</span><span class="fu">predict</span>(mod,<span class="at">newdata=</span>test_A0,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#summarise predictions and compare using plots</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001036 0.004808 0.051115 0.034941 0.936842 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+9.026e-05 6.699e-03 2.449e-02 8.201e-02 9.011e-02 8.978e-01 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0001093 0.0037657 0.0134764 0.0587982 0.0548395 0.8036555 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A0b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0002081 0.0071440 0.0253447 0.0913213 0.0994628 0.8862540 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0,pred_A1)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="day3-morning-solutions_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0b,pred_A1b)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="day3-morning-solutions_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li><p>In this question we will suppose the risk score variable <code>steno_prs</code> is not going to be available for individuals in the future for whom you will want to obtain predictions under the interventions of statin use or no statin use.</p>
+<ol type="a">
+<li><p>Write down a new version of the estimand in Q1 to accommodate this information.</p></li>
+<li><p>Write out the steps for using the IPW approach to estimate your new estimand.</p></li>
+<li><p>Using the steps set out in (b) use the training data to develop a causal prediction model targeting your estimand from 6(a).</p></li>
+<li><p>Obtain estimates of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual in the test data. Compare your predictions with those from question 5.</p></li>
+</ol></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ol type="a">
+<li><p>The estimands of interest are as before, i.e.&nbsp;<span class="math inline">\(\Pr(Y^{1}=1| X^*)\)</span> and <span class="math inline">\(\Pr(Y^{0}=1|X^*)\)</span>, except that the predictors <span class="math inline">\(X^*\)</span> are <code>LDL_0</code>, <code>SBP_0</code>, <code>motion</code>, <code>sex_male</code>, <code>age</code>, <code>diabetes duration</code>, <code>smoking</code>. We are now in a situation where one of the <span class="math inline">\(L\)</span> variables (<code>steno_prs</code>) is not in the set of predictors for the causal prediction model, <span class="math inline">\(X^*\)</span>. This means that, unlike in question 2, we cannot write <span class="math inline">\(\Pr(Y^{1}=1| X^*)=\Pr(Y=1|A=1, X^*)\)</span>.</p></li>
+<li><p>First note that the estimands can be written as <span class="math inline">\(\Pr(Y^{1}=1| X^*)=E\left\{\frac{A}{\Pr(A=1|L)}Y|X^*\right\}\)</span> and <span class="math inline">\(\Pr(Y^{0}=1| X^*)=E\left\{\frac{(1-A)}{\Pr(A=0|L)}Y|X^*\right\}\)</span>, under assumptions that <span class="math inline">\(L\)</span> is sufficient to control for confounding of the association between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>, and that we have positivity. The steps for estimating <span class="math inline">\(\Pr(Y^{1}=1| X^*)=E\left\{\frac{A}{\Pr(A=1|L)}Y|X^*\right\}\)</span> are: (i) Fit a model for <span class="math inline">\(\pi(L)=\Pr(𝐴 = 1|𝐿)\)</span>; (ii) Obtain the weights <span class="math inline">\(1/\pi(L)\)</span>; (iii) Fit a weighted logistic regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X^*\)</span> in people with <span class="math inline">\(A=1\)</span>, where the weights are <span class="math inline">\(1/\pi(L)\)</span>.</p></li>
+</ol>
+<p>The estimand <span class="math inline">\(\Pr(Y^{0}=1| X^*)=E\left\{\frac{(1-A)}{\Pr(A=0|L)}Y|X^*\right\}\)</span> can similarly be estimated by obtaining the weights <span class="math inline">\(1/(1-\pi(L))\)</span>, and then fitting a weighted logistic regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X^*\)</span> in people with <span class="math inline">\(A=0\)</span>, where the weights are <span class="math inline">\(1/(1-\pi(L))\)</span>.</p>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fit the propensity score model</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mod_ps<span class="ot">&lt;-</span><span class="fu">glm</span>(statin<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs,<span class="at">data=</span>train,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain weights</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>pi_L<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ps,<span class="at">newdata=</span>train,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>train<span class="sc">$</span>ipw<span class="ot">&lt;-</span><span class="fu">ifelse</span>(train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span><span class="sc">/</span>pi_L,<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pi_L))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit weighted outcome model in those with A=1</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>mod_ipw_A1<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,],<span class="at">family=</span><span class="st">"binomial"</span>,<span class="at">weights=</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit weighted outcome model in those with A=0</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mod_ipw_A0<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">0</span>,],<span class="at">family=</span><span class="st">"binomial"</span>,<span class="at">weights=</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtain predictions</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pred_A1_ipw<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A1,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>pred_A0_ipw<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A0,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The plots below compare the predictions obtained using the IPW analysis, which excludes <code>steno_prs</code> from the set of predictors, and the g-formula analysis. There is a strong positive relationships between predictions under the two prediction models, under both treatment strategies.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot IPW predictions (which exclude steno_prs as a predictor) against g-formula predictions: using g-formula predictions based on 'mod'</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A1,pred_A1_ipw)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="day3-morning-solutions_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0,pred_A0_ipw)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="day3-morning-solutions_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li><p>We will now obtain predictions for individuals in the deployment data.</p>
+<ol type="a">
+<li><p>Read in the deployment data.</p></li>
+<li><p>Using your model from question 6, obtain predictions of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual.</p></li>
+<li><p>Send your predictions from (b) to Mike.</p></li>
+</ol></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>deploy <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-deployment.rds"</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtain predictions</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>pred_A1_ipw_deploy<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A1,<span class="at">newdata=</span>deploy,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>pred_A0_ipw_deploy<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A0,<span class="at">newdata=</span>deploy,<span class="at">type=</span><span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Causal prediction for medical decision making. Practicals, day 3, morning."</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="an">params:</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">  hide_answers: false</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: true</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="an">editor_options:</span><span class="co"> </span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">  chunk_output_type: inline</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning outcomes</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>To use a DAG to decide which variables should be included in an analysis in order to develop a causal prediction model for predicting the risk of CVD death if a person starts statins and if they do not start statins</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>To develop a causal prediction model using g-formula and inverse probability weighting (IPW) approaches for implementation in a test data set in which the same variables are observed as in the training data set</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>To develop a causal prediction model for a situation in which not all variables available in the training data set are available in the deployment data</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>In this practical we will continue to use the simulated data on people with type 1 diabetes. Interest lies in obtaining predictions of the 5-year risk of CVD death if a person were to start using statins and if they were not to start using statins. A more detailed specification for the causal prediction model is given in the table below.</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>| **Estimand element**           | **Specification**                                                             |</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>| Target population              | Adults with type 1 diabetes who have not yet started using statins.           |</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>| Time point of intended use     | Attendance at a screening visit at the diabetes center                        |</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>| Outcome and prediction horizon | CVD death up to 5 years                                                       |</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>| Predictors                     | LDL, SBP, motion, polygenic risk score, sex, age, diabetes duration, smoking. |</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>| Treatment options              | <span class="sc">\(</span>i<span class="sc">\)</span> Start using statins                                                     |</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>|                                |                                                                               |</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>|                                | <span class="sc">\(</span>ii<span class="sc">\)</span> Do not start using statins                                             |</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>+--------------------------------+-------------------------------------------------------------------------------+</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Using the information provided in the table above write down the causal estimands of interest, following the notation used in the lecture slides.</span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>**Solution:** The estimands of interest are $\Pr(Y^{1}=1| X^*)$ and $\Pr(Y^{0}=1|X^*)$ where $Y^{1}$ denotes the counterfactual outcome $Y$ (CVD death within 5 years) under statin treatment, $Y^{0}$ denotes the counterfactual outcome $Y$ under no statin treatment. The predictors $X^*$ are LDL, motion, polygenic risk score, sex, age, diabetes duration, smoking. The estimands could also be written in terms of expectations as $E(Y^{1}| X^*)$ and $E(Y^{0}| X^*)$.</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Based on the DAG you used in yesterday's practical, we now consider which variables would need to to be included in an analysis in order to develop the causal prediction model, or in other words to enable estimation of $\Pr(Y^{a}=1| X^*)$ ($a=0,1$) from the data.</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>    (a) What are the $L$ variables and what are the $P$ variables?</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a>    (b) Write your causal estimand from question 1 in terms of the observed variables, and state your assumptions.</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>**Solution:** The $L$ variables (confounders of statin use and the outcome) are <span class="in">`LDL_0`</span>, <span class="in">`motion`</span>, <span class="in">`steno_prs`</span>. The $P$ variables (predictors of the outcome but not of statin use) are <span class="in">`sex_male`</span>, <span class="in">`age`</span>, <span class="in">`diabetes_duration`</span>, <span class="in">`smoking,`</span> <span class="in">`SBP_0`</span>.</span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a>The causal estimands can be written as: $\Pr(Y^{1}=1| X^*)=\Pr(Y^{1}=1|L,P)=\Pr(Y=1|A=1, L,P)$ and $\Pr(Y^{0}=1| X^*)=\Pr(Y^{0}=1|L,P)=\Pr(Y=1|A=0, L,P)$. Writing the estimands in terms of the observed data relies on the assumption that $X^*=(L,P)$ are sufficient to control for confounding of the association between statin use and the outcomes, and the consistency assumption.</span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Consider the prediction model that you developed in the practical on Day 1 (afternoon). Is it suitable for making causal predictions, i.e. for estimating your estimand specified in question 1 above? Discuss why or why not.</span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a>**Solution:** Points to consider are:</span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>What was the 'time zero' for your model, and does this align with the time at which you would wish to make the decision about statin use?</span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Did your model include all the necessary $L$ variables?</span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Did your model include any variables on the causal pathway between statin use and the outcome?</span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Read the training data and the test data into R.</span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-train.rds"</span>))</span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-test.rds"</span>))</span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Causal prediction modelling using the g-formula:</span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a>    (a) Using the g-formula approach develop a causal-prediction model using the training data that will enable you to estimate the estimand in 1.</span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-103"><a href="#cb26-103" aria-hidden="true" tabindex="-1"></a>    (b) What assumptions are you making?</span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a>    (c) Based on your model from (b), obtain an estimate of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual in the test data. Compare the estimates of risk under the two treatment options.</span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a>(a) </span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a>We fit a logistic regression model including <span class="in">`cvd_5year`</span> as the outcome $Y$, separately for people with $A=1$ (<span class="in">`statin=1`</span>)and people with $A=0$ (<span class="in">`statin=0`</span>). The $L$ variables and $P$ variables (and hence $X^*=<span class="sc">\{</span>L,P<span class="sc">\}</span>$ are as given in Question 2. A different model is discussed below.</span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-118"><a href="#cb26-118" aria-hidden="true" tabindex="-1"></a>mod_A1<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,],<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_A1)</span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a>mod_A0<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">0</span>,],<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_A0)</span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a>(b) </span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We are assuming that the $L$ variables are sufficient to control for confounding of the association between statins and CVD, i.e. that there are no confounders that are unaccounted for in the model.</span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We are also making modelling assumptions, which include that the continuous $L$ variable (<span class="in">`LDL_0`</span>) has been entered into the model with the correct functional form. Adding a spline term could be a good idea, for example, though we do not use any splines for the continuous variables here due to the limited sample size.</span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-133"><a href="#cb26-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>It does not matter whether the $P$ variables are entered in the correct form into the model - using an incorrect form will impact of predictive performance but will not invalidate the models as estimators for the estimand of interest.</span>
+<span id="cb26-134"><a href="#cb26-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>An alternative would be to fit a combined model in the whole training data including $A$ as a predictor, rather than fitting separate models for $A=0,1$. The alternative model is fitted below. Compared with the separate models, this makes the additional assumption that there are no interactions between treatment use (<span class="in">`statin`</span>) and any of the $X^*$ variables included in the model.</span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-139"><a href="#cb26-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-140"><a href="#cb26-140" aria-hidden="true" tabindex="-1"></a>mod<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>statin<span class="sc">+</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-144"><a href="#cb26-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-145"><a href="#cb26-145" aria-hidden="true" tabindex="-1"></a>(c) </span>
+<span id="cb26-146"><a href="#cb26-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-147"><a href="#cb26-147" aria-hidden="true" tabindex="-1"></a>Here we illustrate obtaining predictions first based on <span class="in">`mod_A1`</span> and <span class="in">`mod_A0`</span> (i.e. the models fitted separately in the two statin treatment groups) and second using model <span class="in">`mod`</span> (which included <span class="in">`statin`</span> as a covariate).</span>
+<span id="cb26-148"><a href="#cb26-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-149"><a href="#cb26-149" aria-hidden="true" tabindex="-1"></a>Based on the model <span class="in">`mod`</span>, which included <span class="in">`statin`</span> as a covariate, the estimates of risk under statin use are all lower than the estimates of risk under no statin use. Based on the models <span class="in">`mod_A1`</span> and <span class="in">`mod_A0`</span>, in which the models were fitted separately in the two statin treatment groups, the estimates of risk under statin use tend to be lower than the estimates of risk under no statin use, but there are a few individuals with a higher estimated risk under statin use compared to non-use.</span>
+<span id="cb26-150"><a href="#cb26-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-153"><a href="#cb26-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-154"><a href="#cb26-154" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtaining predictions using mod_A1 and mod_A0</span></span>
+<span id="cb26-155"><a href="#cb26-155" aria-hidden="true" tabindex="-1"></a>pred_A1<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_A1,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-156"><a href="#cb26-156" aria-hidden="true" tabindex="-1"></a>pred_A0<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_A0,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-157"><a href="#cb26-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-158"><a href="#cb26-158" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtaining predictions using mod</span></span>
+<span id="cb26-159"><a href="#cb26-159" aria-hidden="true" tabindex="-1"></a><span class="co">#First create versions of the test data in which statin is set to 1 for everyone and in which statin is set to 0 for everyone</span></span>
+<span id="cb26-160"><a href="#cb26-160" aria-hidden="true" tabindex="-1"></a>test_A1<span class="ot">&lt;-</span>test</span>
+<span id="cb26-161"><a href="#cb26-161" aria-hidden="true" tabindex="-1"></a>test_A1<span class="sc">$</span>statin<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb26-162"><a href="#cb26-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-163"><a href="#cb26-163" aria-hidden="true" tabindex="-1"></a>test_A0<span class="ot">&lt;-</span>test</span>
+<span id="cb26-164"><a href="#cb26-164" aria-hidden="true" tabindex="-1"></a>test_A0<span class="sc">$</span>statin<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb26-165"><a href="#cb26-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-166"><a href="#cb26-166" aria-hidden="true" tabindex="-1"></a>pred_A1b<span class="ot">&lt;-</span><span class="fu">predict</span>(mod,<span class="at">newdata=</span>test_A1,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-167"><a href="#cb26-167" aria-hidden="true" tabindex="-1"></a>pred_A0b<span class="ot">&lt;-</span><span class="fu">predict</span>(mod,<span class="at">newdata=</span>test_A0,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-168"><a href="#cb26-168" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb26-169"><a href="#cb26-169" aria-hidden="true" tabindex="-1"></a><span class="co">#summarise predictions and compare using plots</span></span>
+<span id="cb26-170"><a href="#cb26-170" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A1)</span>
+<span id="cb26-171"><a href="#cb26-171" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A0)</span>
+<span id="cb26-172"><a href="#cb26-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-173"><a href="#cb26-173" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A1b)</span>
+<span id="cb26-174"><a href="#cb26-174" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pred_A0b)</span>
+<span id="cb26-175"><a href="#cb26-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-176"><a href="#cb26-176" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0,pred_A1)</span>
+<span id="cb26-177"><a href="#cb26-177" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb26-178"><a href="#cb26-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-179"><a href="#cb26-179" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0b,pred_A1b)</span>
+<span id="cb26-180"><a href="#cb26-180" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb26-181"><a href="#cb26-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-182"><a href="#cb26-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-183"><a href="#cb26-183" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-184"><a href="#cb26-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-185"><a href="#cb26-185" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>In this question we will suppose the risk score variable <span class="in">`steno_prs`</span> is not going to be available for individuals in the future for whom you will want to obtain predictions under the interventions of statin use or no statin use.</span>
+<span id="cb26-186"><a href="#cb26-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-187"><a href="#cb26-187" aria-hidden="true" tabindex="-1"></a>    (a) Write down a new version of the estimand in Q1 to accommodate this information.</span>
+<span id="cb26-188"><a href="#cb26-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-189"><a href="#cb26-189" aria-hidden="true" tabindex="-1"></a>    (b) Write out the steps for using the IPW approach to estimate your new estimand.</span>
+<span id="cb26-190"><a href="#cb26-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-191"><a href="#cb26-191" aria-hidden="true" tabindex="-1"></a>    (c) Using the steps set out in (b) use the training data to develop a causal prediction model targeting your estimand from 6(a).</span>
+<span id="cb26-192"><a href="#cb26-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-193"><a href="#cb26-193" aria-hidden="true" tabindex="-1"></a>    (d) Obtain estimates of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual in the test data. Compare your predictions with those from question 5.</span>
+<span id="cb26-194"><a href="#cb26-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-195"><a href="#cb26-195" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-196"><a href="#cb26-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-197"><a href="#cb26-197" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb26-198"><a href="#cb26-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-199"><a href="#cb26-199" aria-hidden="true" tabindex="-1"></a>(a) The estimands of interest are as before, i.e. $\Pr(Y^{1}=1| X^*)$ and $\Pr(Y^{0}=1|X^*)$, except that the predictors $X^*$ are `LDL_0`, `SBP_0`, `motion`, `sex_male`, `age`, `diabetes duration`, `smoking`. We are now in a situation where one of the $L$ variables (`steno_prs`) is not in the set of predictors for the causal prediction model, $X^*$. This means that, unlike in question 2, we cannot write $\Pr(Y^{1}=1| X^*)=\Pr(Y=1|A=1, X^*)$.</span>
+<span id="cb26-200"><a href="#cb26-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-201"><a href="#cb26-201" aria-hidden="true" tabindex="-1"></a>(b) First note that the estimands can be written as $\Pr(Y^{1}=1| X^*)=E\left\{\frac{A}{\Pr(A=1|L)}Y|X^*\right\}$ and $\Pr(Y^{0}=1| X^*)=E\left\{\frac{(1-A)}{\Pr(A=0|L)}Y|X^*\right\}$, under assumptions that $L$ is sufficient to control for confounding of the association between $A$ and $Y$, and that we have positivity. The steps for estimating $\Pr(Y^{1}=1| X^*)=E\left\{\frac{A}{\Pr(A=1|L)}Y|X^*\right\}$ are: (i) Fit a model for $\pi(L)=\Pr(𝐴 = 1|𝐿)$; (ii) Obtain the weights $1/\pi(L)$; (iii) Fit a weighted logistic regression of $Y$ on $X^*$ in people with $A=1$, where the weights are $1/\pi(L)$.</span>
+<span id="cb26-202"><a href="#cb26-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-203"><a href="#cb26-203" aria-hidden="true" tabindex="-1"></a>The estimand $\Pr(Y^{0}=1| X^*)=E\left\{\frac{(1-A)}{\Pr(A=0|L)}Y|X^*\right\}$ can similarly be estimated by obtaining the weights $1/(1-\pi(L))$, and then fitting a weighted logistic regression of $Y$ on $X^*$ in people with $A=0$, where the weights are $1/(1-\pi(L))$.</span>
+<span id="cb26-204"><a href="#cb26-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-205"><a href="#cb26-205" aria-hidden="true" tabindex="-1"></a>(c) </span>
+<span id="cb26-206"><a href="#cb26-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-209"><a href="#cb26-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-210"><a href="#cb26-210" aria-hidden="true" tabindex="-1"></a><span class="co">#fit the propensity score model</span></span>
+<span id="cb26-211"><a href="#cb26-211" aria-hidden="true" tabindex="-1"></a>mod_ps<span class="ot">&lt;-</span><span class="fu">glm</span>(statin<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>steno_prs,<span class="at">data=</span>train,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb26-212"><a href="#cb26-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-213"><a href="#cb26-213" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain weights</span></span>
+<span id="cb26-214"><a href="#cb26-214" aria-hidden="true" tabindex="-1"></a>pi_L<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ps,<span class="at">newdata=</span>train,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-215"><a href="#cb26-215" aria-hidden="true" tabindex="-1"></a>train<span class="sc">$</span>ipw<span class="ot">&lt;-</span><span class="fu">ifelse</span>(train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span><span class="sc">/</span>pi_L,<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pi_L))</span>
+<span id="cb26-216"><a href="#cb26-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-217"><a href="#cb26-217" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit weighted outcome model in those with A=1</span></span>
+<span id="cb26-218"><a href="#cb26-218" aria-hidden="true" tabindex="-1"></a>mod_ipw_A1<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>,],<span class="at">family=</span><span class="st">"binomial"</span>,<span class="at">weights=</span>ipw)</span>
+<span id="cb26-219"><a href="#cb26-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-220"><a href="#cb26-220" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit weighted outcome model in those with A=0</span></span>
+<span id="cb26-221"><a href="#cb26-221" aria-hidden="true" tabindex="-1"></a>mod_ipw_A0<span class="ot">&lt;-</span><span class="fu">glm</span>(cvd_5year<span class="sc">~</span>LDL_0<span class="sc">+</span>motion<span class="sc">+</span>sex_male<span class="sc">+</span>age<span class="sc">+</span>diabetes_duration<span class="sc">+</span>smoking<span class="sc">+</span>SBP_0,<span class="at">data=</span>train[train<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">0</span>,],<span class="at">family=</span><span class="st">"binomial"</span>,<span class="at">weights=</span>ipw)</span>
+<span id="cb26-222"><a href="#cb26-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-223"><a href="#cb26-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-224"><a href="#cb26-224" aria-hidden="true" tabindex="-1"></a>(d) </span>
+<span id="cb26-225"><a href="#cb26-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-228"><a href="#cb26-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-229"><a href="#cb26-229" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtain predictions</span></span>
+<span id="cb26-230"><a href="#cb26-230" aria-hidden="true" tabindex="-1"></a>pred_A1_ipw<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A1,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-231"><a href="#cb26-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-232"><a href="#cb26-232" aria-hidden="true" tabindex="-1"></a>pred_A0_ipw<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A0,<span class="at">newdata=</span>test,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-233"><a href="#cb26-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-234"><a href="#cb26-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-235"><a href="#cb26-235" aria-hidden="true" tabindex="-1"></a>The plots below compare the predictions obtained using the IPW analysis, which excludes <span class="in">`steno_prs`</span> from the set of predictors, and the g-formula analysis. There is a strong positive relationships between predictions under the two prediction models, under both treatment strategies.</span>
+<span id="cb26-236"><a href="#cb26-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-239"><a href="#cb26-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-240"><a href="#cb26-240" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot IPW predictions (which exclude steno_prs as a predictor) against g-formula predictions: using g-formula predictions based on 'mod'</span></span>
+<span id="cb26-241"><a href="#cb26-241" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A1,pred_A1_ipw)</span>
+<span id="cb26-242"><a href="#cb26-242" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb26-243"><a href="#cb26-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-244"><a href="#cb26-244" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_A0,pred_A0_ipw)</span>
+<span id="cb26-245"><a href="#cb26-245" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb26-246"><a href="#cb26-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-247"><a href="#cb26-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-248"><a href="#cb26-248" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+<span id="cb26-249"><a href="#cb26-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-250"><a href="#cb26-250" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>We will now obtain predictions for individuals in the deployment data.</span>
+<span id="cb26-251"><a href="#cb26-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-252"><a href="#cb26-252" aria-hidden="true" tabindex="-1"></a>    (a) Read in the deployment data.</span>
+<span id="cb26-253"><a href="#cb26-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-254"><a href="#cb26-254" aria-hidden="true" tabindex="-1"></a>    (b) Using your model from question 6, obtain predictions of the 5-year risk of CVD death (i) under statin use and (ii) under non-statin use for each individual.</span>
+<span id="cb26-255"><a href="#cb26-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-256"><a href="#cb26-256" aria-hidden="true" tabindex="-1"></a>    (c) Send your predictions from (b) to Mike.</span>
+<span id="cb26-257"><a href="#cb26-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-258"><a href="#cb26-258" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) "::: {.content-hidden}"`</span></span>
+<span id="cb26-259"><a href="#cb26-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-260"><a href="#cb26-260" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb26-261"><a href="#cb26-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-264"><a href="#cb26-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-265"><a href="#cb26-265" aria-hidden="true" tabindex="-1"></a>deploy <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://smartbiomed.github.io/causal-prediction-course/data/exercises/data/type1-diabetes-deployment.rds"</span>))</span>
+<span id="cb26-266"><a href="#cb26-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-267"><a href="#cb26-267" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtain predictions</span></span>
+<span id="cb26-268"><a href="#cb26-268" aria-hidden="true" tabindex="-1"></a>pred_A1_ipw_deploy<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A1,<span class="at">newdata=</span>deploy,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-269"><a href="#cb26-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-270"><a href="#cb26-270" aria-hidden="true" tabindex="-1"></a>pred_A0_ipw_deploy<span class="ot">&lt;-</span><span class="fu">predict</span>(mod_ipw_A0,<span class="at">newdata=</span>deploy,<span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb26-271"><a href="#cb26-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-272"><a href="#cb26-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-273"><a href="#cb26-273" aria-hidden="true" tabindex="-1"></a><span class="in">`r if (params$hide_answers) ":::"`</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:smartbiomed_info@sund.ku.dk">
+<p>Contact course director</p>
+</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

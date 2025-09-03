@@ -1,0 +1,120 @@
+---
+title: "Exercise results"
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+library(igraph)
+library(causaleffect)
+library(TruncatedNormal)
+library(riskRegression)
+library(plotROC)
+library(ids)
+
+
+
+pa <- function(dag, v) {
+  neighbors(dag, v, mode = "in")
+}
+
+ch <- function(dag, v) {
+  neighbors(dag, v, mode = "out")
+}
+
+exog <- function(dag) {
+  lapply(adjacent_vertices(dag, V(dag), mode = "in"), \(d) length(d) == 0)
+}
+
+#exog(dag)
+
+#names(V(dag))[unlist(exog(dag))]
+
+dag2 <- graph_from_literal(
+  steno_prs,
+  sex_male,
+  age +- sex_male,
+  diabetes_duration +- sex_male:age,
+  time_cens +- sex_male:age:diabetes_duration,
+  motion +- sex_male:age:diabetes_duration,
+  smoking +- sex_male:age:diabetes_duration,
+  HBA1C_0 +- diabetes_duration:age:sex_male,
+  HBA1C_1 +- HBA1C_0:motion:smoking:sex_male,
+  urine_albumin_0 +- age:sex_male:diabetes_duration:HBA1C_0,
+  urine_albumin_1 +- urine_albumin_0:age:sex_male:steno_prs,
+  LDL_0 +- age:sex_male:motion:steno_prs,
+  statin +- steno_prs:LDL_0:motion,
+  LDL_1 +- LDL_0:statin:sex_male:motion,
+  SBP_0 +- age:sex_male:motion:smoking:steno_prs:diabetes_duration:HBA1C_0,
+  SBP_1 +- age:sex_male:motion:smoking:steno_prs:SBP_0:
+    statin:HBA1C_1:HBA1C_0,
+  eGFR_0 +- SBP_0:age:sex_male:
+    diabetes_duration:HBA1C_0,
+  eGFR_1 +- SBP_1:urine_albumin_0:age:sex_male:
+    HBA1C_0:HBA1C_1,
+  cvd_5year +- LDL_1:age:diabetes_duration:sex_male:
+    smoking:motion:steno_prs:SBP_1,
+  time_esrd +- urine_albumin_0:urine_albumin_1:eGFR_0:
+    eGFR_1:HBA1C_0:HBA1C_1:sex_male
+
+)
+
+```
+
+# The DAG
+
+```{r}
+plot(dag2)
+```
+
+# Validation
+
+```{r}
+plot(delete_edges(dag2, E(dag2)[.to("statin")]))
+```
+
+
+# Estimated Brier score
+
+```{r}
+#| echo: false
+valid <- readRDS("type1-diabetes-statin-intervene.rds")
+preds <- readRDS("MariaAndChristian2.rds")
+
+valid <- merge(valid, preds, by = "SBP_0")
+```
+
+
+```{r}
+#| echo: true
+with(subset(valid, statin.x == 1), 
+     mean((riskest1 - cvd_5year)^2, na.rm = TRUE))
+with(subset(valid, statin.x == 0), 
+     mean((riskest0 - cvd_5year)^2, na.rm = TRUE))
+```
+
+
+# ROC for statin = 1
+
+```{r}
+library(plotROC)
+ggplot(subset(valid, statin.x == 1), 
+       aes(m = riskest1, d = cvd_5year)) + geom_roc()
+```
+
+# ROC for statin = 0
+
+```{r}
+ggplot(subset(valid, statin.x == 0), 
+       aes(m = riskest0, d = cvd_5year)) + geom_roc()
+
+```
+
+
+# In practice ... 
+
+It is difficult to do this sort of study, if possible at all
+
+So what can we do to evaluate causal prediction accuracy?
