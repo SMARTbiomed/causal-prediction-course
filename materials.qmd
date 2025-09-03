@@ -49,7 +49,8 @@ Coming soon!
 ## Afternoon
 
 1. [Lecture 9: Evaluation, Nan van Geloven (pdf)](/data/lectures/day3-afternoon-lecture.pdf)
-2. [Exercise 6: Evaluation](/data/exercises/day3-afternoon-practical_NO_SOLUTIONS.html)
+2. [Exercise 6: Evaluation](/data/exercises/day3-afternoon.qmd)
+    - [Solutions](/data/exercises/day3-afternoon-solution.qmd)
 
 # Day 4
 

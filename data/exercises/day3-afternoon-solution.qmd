@@ -6,13 +6,13 @@ editor: visual
 
 ```{r setup, include=FALSE}
 # Student version
-knitr::opts_chunk$set(fig.width=5, fig.height=4, fig.align='center', fig.path='Figs/',                     echo=TRUE, include=FALSE, warning=FALSE, message=FALSE)
-teacher <- FALSE
+#knitr::opts_chunk$set(fig.width=5, fig.height=4, fig.align='center', fig.path='Figs/',                     echo=TRUE, include=FALSE, warning=FALSE, message=FALSE)
+#teacher <- FALSE
 # Teacher version
-#  knitr::opts_chunk$set(fig.width=5, fig.height=4, fig.align='center', fig.path='Figs/',
-#                        echo=TRUE, warning=FALSE, message=FALSE,
-#                        tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=72))
-# teacher <- TRUE
+ knitr::opts_chunk$set(fig.width=5, fig.height=4, fig.align='center', fig.path='Figs/',
+                       echo=TRUE, warning=FALSE, message=FALSE,
+                       tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=72))
+teacher <- TRUE
 
 ```
 
