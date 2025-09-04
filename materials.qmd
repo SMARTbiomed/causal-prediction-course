@@ -57,6 +57,9 @@ Coming soon!
 
 ## Morning
 
+1. [Lecture 10: Time to event outcomes and strategies, Ruth Keogh (pdf)](/data/lectures/causalpred_RK_Day4_morning.pdf)
+
+
 ## Afternoon
 
 
