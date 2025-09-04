@@ -249,21 +249,21 @@
     "href": "materials.html",
     "title": "Course materials",
     "section": "",
-    "text": "Coming soon!"
+    "text": "Lecture 1: Prediction models in medicine, Michael Sachs (pdf)\nLecture 2: Medical risk prediction models, Thomas Gerds (pdf)\nExercise 1: The Steno Risk engine\n\nSolutions\n\n\n\n\n\n\nLecture 3: Obstacles and pitfalls, Thomas Gerds (pdf)\nLecture 4: Learning algorithms and validation, Michael Sachs (pdf)\nExercise 2: Developing and validating your own models\nLecture 5: Introduction to causal prediction, Ruth Keogh (pdf)"
   },
   {
     "objectID": "materials.html#morning",
     "href": "materials.html#morning",
     "title": "Course materials",
-    "section": "Morning",
-    "text": "Morning\n\nLecture 1: Prediction models in medicine, Michael Sachs (pdf)\nLecture 2: Medical risk prediction models, Thomas Gerds (pdf)\nExercise 1: The Steno Risk engine\n\nSolutions"
+    "section": "",
+    "text": "Lecture 1: Prediction models in medicine, Michael Sachs (pdf)\nLecture 2: Medical risk prediction models, Thomas Gerds (pdf)\nExercise 1: The Steno Risk engine\n\nSolutions"
   },
   {
     "objectID": "materials.html#afternoon",
     "href": "materials.html#afternoon",
     "title": "Course materials",
-    "section": "Afternoon",
-    "text": "Afternoon\n\nLecture 3: Obstacles and pitfalls, Thomas Gerds (pdf)\nLecture 4: Learning algorithms and validation, Michael Sachs (pdf)\nExercise 2: Developing and validating your own models\nLecture 5: Introduction to causal prediction, Ruth Keogh (pdf)"
+    "section": "",
+    "text": "Lecture 3: Obstacles and pitfalls, Thomas Gerds (pdf)\nLecture 4: Learning algorithms and validation, Michael Sachs (pdf)\nExercise 2: Developing and validating your own models\nLecture 5: Introduction to causal prediction, Ruth Keogh (pdf)"
   },
   {
     "objectID": "materials.html#morning-1",
@@ -305,6 +305,6 @@
     "href": "materials.html#afternoon-3",
     "title": "Course materials",
     "section": "Afternoon",
-    "text": "Afternoon"
+    "text": "Afternoon\n\nLecture 12: Clinical utility, Michael Sachs (pdf)\nLecture 13: Summary and takeaways, Erin Gabriel (pdf)"
   }
 ]
