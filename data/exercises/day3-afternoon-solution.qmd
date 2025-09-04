@@ -104,6 +104,8 @@ Now we continue with counterfactual performance of both models in the test set.
 #treatment model
 mod_ps <- glm(statin ~ LDL_0 + motion + steno_prs, data=test,family="binomial")
 
+#note that in the lecture I showed the identification formula with exchangeability conditional on full set of covariates $X$. Since we know that the $P^*$ variables do not relate to the treatment process, they can be left out of the weigths model here.
+
 #obtain weights
 pi_L <- predict(mod_ps, newdata = test, type = "response")
 test$ipw <- ifelse(test$statin==1, 1/pi_L, 1/(1-pi_L))
@@ -223,5 +225,4 @@ p_gcomp_ipw <-
   )
 
 plot_grid(p_gcomp_reg, p_gcomp_ipw)
-
 ```

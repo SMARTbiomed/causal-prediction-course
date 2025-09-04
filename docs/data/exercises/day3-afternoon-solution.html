@@ -304,12 +304,14 @@ Results of model comparisons:
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#treatment model</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mod_ps <span class="ot">&lt;-</span> <span class="fu">glm</span>(statin <span class="sc">~</span> LDL_0 <span class="sc">+</span> motion <span class="sc">+</span> steno_prs, <span class="at">data=</span>test,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain weights</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>pi_L <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_ps, <span class="at">newdata =</span> test, <span class="at">type =</span> <span class="st">"response"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>ipw <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(test<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>pi_L, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pi_L))</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(test<span class="sc">$</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#note that in the lecture I showed the identification formula with exchangeability conditional on full set of covariates $X$. Since we know that the $P^*$ variables do not relate to the treatment process, they can be left out of the weigths model here.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#obtain weights</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>pi_L <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_ps, <span class="at">newdata =</span> test, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>ipw <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(test<span class="sc">$</span>statin<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>pi_L, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>pi_L))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(test<span class="sc">$</span>ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

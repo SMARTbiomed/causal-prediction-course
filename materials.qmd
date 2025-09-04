@@ -5,7 +5,6 @@ format:
     toc: true
 ---
 
-Coming soon!
 
 # Day 1
 
@@ -58,7 +57,8 @@ Coming soon!
 ## Morning
 
 1. [Lecture 10: Time to event outcomes and strategies, Ruth Keogh (pdf)](/data/lectures/causalpred_RK_Day4_morning.pdf)
-
+2. [Lecture 11: Case study, Nan van Geloven (pdf)](/data/lectures/day4-morning-case study.pdf)
+2. [Case study assignment (docx)](/data/exercises/Day 4 case study assignment.docx)
 
 ## Afternoon
 
